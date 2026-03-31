@@ -989,22 +989,26 @@ footer p {
     animation: liquid-glass 6s ease-in-out infinite alternate !important;
     border: 2px solid rgba(255, 159, 28, 0.3) !important;
     overflow: hidden; /* Keep content contained if border-radius gets wild */
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 @keyframes liquid-glass {
     0% { 
-        border-radius: 20px 50px 30px 60px / 40px 20px 60px 30px; 
+        border-radius: 24px 35px 24px 35px / 35px 24px 35px 24px; 
         box-shadow: 0 0 10px rgba(255, 159, 28, 0.1);
     }
     50% { 
-        border-radius: 50% 20% 60% 30% / 30% 50% 20% 50%; 
-        box-shadow: 0 0 25px rgba(255, 159, 28, 0.3);
+        border-radius: 40px 24px 45px 30px / 30px 45px 24px 40px; 
+        box-shadow: 0 0 20px rgba(255, 159, 28, 0.2);
     }
     100% { 
-        border-radius: 30% 60% 40% 20% / 50% 30% 60% 40%;
-        box-shadow: 0 0 15px rgba(255, 159, 28, 0.15);
+        border-radius: 24px 35px 24px 35px / 35px 24px 35px 24px;
+        box-shadow: 0 0 10px rgba(255, 159, 28, 0.1);
     }
 }
+
 
 /* Unique Synchrony for Each Liquid Container (Faster) */
 .features-grid .feature-card:nth-child(1) { animation-duration: 4s; animation-delay: 0s; }
@@ -1013,3 +1017,4 @@ footer p {
 .features-grid .feature-card:nth-child(4) { animation-duration: 6s; animation-delay: -3s; }
 .features-grid .feature-card:nth-child(5) { animation-duration: 3.5s; animation-delay: -4s; }
 .features-grid .feature-card:nth-child(6) { animation-duration: 5s; animation-delay: -5s; }
+
