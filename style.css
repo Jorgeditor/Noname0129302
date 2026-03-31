@@ -543,6 +543,13 @@ footer p {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    border-color: #ff9f1c; /* premium orange */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 159, 28, 0.15);
 }
 
 .quote-mark {
@@ -577,6 +584,13 @@ footer p {
     align-items: center;
     gap: 15px;
     z-index: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.reviewer-info:hover p, .reviewer-info:hover span, .reviewer-info:hover {
+    opacity: 0.8;
 }
 
 .avatar {
