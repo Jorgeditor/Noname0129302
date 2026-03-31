@@ -1079,6 +1079,7 @@ footer p {
 .portal-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     background: transparent;
     color: #fff;
@@ -1086,17 +1087,18 @@ footer p {
     font-size: 18px;
     font-weight: 500;
     padding: 16px 32px;
+    min-width: 280px; /* Alargado */
     border-radius: 50px;
-    border: 2px solid #6b1fe0;
-    box-shadow: 0 0 20px rgba(107, 31, 224, 0.4);
-    transition: all 0.3s ease;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(255, 159, 28, 0.4);
+    transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
     margin-bottom: 30px;
 }
 
 .portal-btn:hover {
-    background: rgba(107, 31, 224, 0.1);
-    box-shadow: 0 0 30px rgba(107, 31, 224, 0.7);
-    transform: translateY(-2px);
+    background: rgba(255, 159, 28, 0.1);
+    box-shadow: 0 0 30px rgba(255, 159, 28, 0.7);
+    transform: translateY(-2px) scale(1.02);
 }
 
 .portal-note {
@@ -1108,13 +1110,13 @@ footer p {
     gap: 8px;
 }
 
-.purple-dot {
+.accent-dot {
     width: 6px;
     height: 6px;
-    background-color: #6b1fe0;
+    background-color: var(--accent-color);
     border-radius: 50%;
     display: inline-block;
-    box-shadow: 0 0 8px rgba(107, 31, 224, 0.8);
+    box-shadow: 0 0 8px rgba(255, 159, 28, 0.8);
 }
 
 /* FAQ Section */
@@ -1148,7 +1150,7 @@ footer p {
 }
 
 .faq-item:hover {
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 159, 28, 0.2);
 }
 
 .faq-question {
@@ -1183,7 +1185,7 @@ footer p {
 }
 
 .faq-item.open {
-    border-color: rgba(107, 31, 224, 0.4);
+    border-color: rgba(255, 159, 28, 0.5);
 }
 
 .faq-item.open .faq-question {
@@ -1192,7 +1194,7 @@ footer p {
 
 .faq-item.open .faq-question i {
     transform: rotate(180deg);
-    color: #6b1fe0;
+    color: var(--accent-color);
 }
 
 .faq-item.open .faq-answer {
