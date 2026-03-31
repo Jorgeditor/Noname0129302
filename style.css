@@ -27,63 +27,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Background Video Settings */
-.video-bg-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 0; /* Ensures it sits above body background */
-    overflow: hidden;
-    pointer-events: none; /* Let clicks pass through to the page */
-}
-
-.hero-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.8; /* Keep text highly readable */
-    background: #333333; /* Light gray box so it is extremely obvious while video is empty */
-}
-
-.video-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 300px; /* Smooth gradient blend into the black rest of the page */
-    background: linear-gradient(to top, var(--bg-color) 0%, transparent 100%);
-    pointer-events: none;
-}
-
-/* Mute Toggle Button */
-.video-mute-btn {
-    pointer-events: auto; /* Crucial so button is clickable despite container being none */
-    position: absolute;
-    bottom: 60px; /* Anchored nicely into the hero area */
-    right: 40px;
-    background: rgba(5, 5, 5, 0.4);
-    border: 1px solid rgba(255, 159, 28, 0.5); /* subtle premium orange border */
-    color: var(--text-color);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    z-index: 20;
-    transition: all 0.3s ease;
-}
-
-.video-mute-btn:hover {
-    background: var(--accent-color);
-    color: #000;
-    transform: scale(1.1);
-}
-
 /* Background Grid Overlay (Retro Grid style) */
 body::before {
     content: '';
