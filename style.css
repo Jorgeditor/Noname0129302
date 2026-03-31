@@ -41,8 +41,8 @@ body {
     overflow: hidden;
     z-index: 0;
     pointer-events: none;
-    -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
-    mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
 }
 
 .video-bg-container iframe {
@@ -53,7 +53,7 @@ body {
     height: 56.25vw; /* 16:9 Aspect Ratio */
     min-height: 100vh;
     min-width: 177.77vh; /* 16:9 Aspect Ratio */
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.15);
     pointer-events: none;
 }
 
