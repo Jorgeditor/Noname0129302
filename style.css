@@ -31,6 +31,33 @@ body {
     overflow-x: hidden;
 }
 
+/* Background Video */
+.video-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    z-index: -2;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+    opacity: 0.45;
+}
+
+.video-bg-container iframe {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw; /* 16:9 Aspect Ratio */
+    min-height: 100vh;
+    min-width: 177.77vh; /* 16:9 Aspect Ratio */
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
 /* Background Grid Overlay (Premium RGB Glow) */
 body::before {
     content: '';
