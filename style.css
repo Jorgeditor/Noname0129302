@@ -141,6 +141,29 @@ main {
     background: var(--accent-color);
 }
 
+.page-card {
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    padding: 60px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    margin: 40px auto;
+}
+
+.page-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+}
+
+
 .hero-icon {
     font-size: 32px;
     color: var(--accent-color);
@@ -394,6 +417,7 @@ footer p {
     height: 100%;
     z-index: -2;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .blob {
@@ -403,6 +427,7 @@ footer p {
     background: radial-gradient(circle, rgba(255, 216, 77, 0.05) 0%, transparent 70%);
     border-radius: 50%;
     filter: blur(80px);
+    pointer-events: none;
 }
 
 .blob-1 {
