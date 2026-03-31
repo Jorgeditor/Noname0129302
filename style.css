@@ -436,6 +436,9 @@ footer p {
     box-shadow: 0 0 15px rgba(255, 159, 28, 0.4);
     position: absolute;
     top: -25px; /* Above price */
+    left: 50%;
+    transform: translateX(-50%); /* Properly center even if text length changes */
+    white-space: nowrap;
 }
 
 .bounce-anim {
@@ -443,8 +446,8 @@ footer p {
 }
 
 @keyframes promo-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
 }
 
 /* Background Blobs */
