@@ -224,7 +224,7 @@ h1 span {
     display: flex;
     align-items: center;
     gap: 80px;
-    margin-bottom: 150px;
+    margin-bottom: 100px;
 }
 
 .feature-row.reverse {
@@ -878,7 +878,11 @@ footer p {
 }
 
 .licensing-section {
-    padding: 100px 0;
+    padding: 40px 0 100px 0;
+}
+
+.licensing-section .section-divider {
+    margin-top: 0;
 }
 
 .licensing-grid {
