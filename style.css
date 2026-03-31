@@ -481,9 +481,9 @@ footer p {
 }
 
 .feature-card {
-    background: rgba(12, 12, 12, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border: 1px solid var(--card-border);
     padding: 30px;
     border-radius: 16px;
