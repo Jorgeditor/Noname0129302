@@ -221,7 +221,7 @@ h1 span {
 
 .section-divider {
     text-align: center;
-    margin: 60px 0;
+    margin: 40px 0;
 }
 
 .section-divider h2 {
@@ -230,14 +230,15 @@ h1 span {
     letter-spacing: 5px;
     color: var(--accent-color);
     text-transform: uppercase;
-    margin: 15px 0;
+    margin: 8px 0;
 }
 
 .section-divider .line {
-    width: 1px;
+    width: 2px;
     height: 30px;
-    background: linear-gradient(to bottom, transparent, var(--accent-color), transparent);
+    background: linear-gradient(to bottom, transparent 0%, var(--accent-color) 40%, var(--accent-color) 60%, transparent 100%);
     margin: 0 auto;
+    opacity: 0.8;
 }
 
 .feature-row {
