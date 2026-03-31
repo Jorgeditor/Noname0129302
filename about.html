@@ -57,5 +57,42 @@
             <p>&copy; 2026 LUCKYTOOLS PRO. AUTOMATING YOUR CREATIVITY.</p>
         </div>
     </footer>
+
+    <script>
+        // Smooth Scroll Reveal Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+        });
+
+        // Click-to-copy for discount code
+        const discountBox = document.getElementById('discountBox');
+        if (discountBox) {
+            discountBox.addEventListener('click', () => {
+                const code = document.getElementById('promoCode').innerText;
+                navigator.clipboard.writeText(code).then(() => {
+                    const originalText = discountBox.innerHTML;
+                    discountBox.classList.add('copied');
+                    discountBox.innerHTML = '<i class="fas fa-check"></i> ' + code + ' Copied!';
+                    setTimeout(() => {
+                        discountBox.classList.remove('copied');
+                        discountBox.innerHTML = originalText;
+                    }, 2000);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
