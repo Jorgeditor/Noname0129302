@@ -1215,3 +1215,23 @@ footer p {
 .faq-item.open .faq-answer {
     max-height: 200px;
 }
+
+/* Hero Pop Animation */
+.load-pop {
+    animation: hero-pop-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transform-origin: center center;
+    opacity: 0;
+    /* Optional: Adding a slight delay so it pops right after page renders, matching video entrance nicely */
+    animation-delay: 0.1s;
+}
+
+@keyframes hero-pop-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.4) translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
