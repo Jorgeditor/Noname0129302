@@ -507,12 +507,10 @@
                 muteBtn.addEventListener('click', () => {
                     if (video.muted) {
                         video.muted = false;
-                        icon.classList.remove('fa-volume-mute');
-                        icon.classList.add('fa-volume-up');
+                        icon.className = 'fas fa-volume-up';
                     } else {
                         video.muted = true;
-                        icon.classList.remove('fa-volume-up');
-                        icon.classList.add('fa-volume-mute');
+                        icon.className = 'fas fa-volume-mute';
                     }
                 });
             }
