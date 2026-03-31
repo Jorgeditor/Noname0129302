@@ -982,3 +982,25 @@ footer p {
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
+
+/* Liquid Glass Animation System */
+.feature-card {
+    /* Keep current glass styles, add animation */
+    animation: liquid-glass 10s ease-in-out infinite alternate;
+    border: 1px solid rgba(255, 159, 28, 0.2) !important;
+}
+
+@keyframes liquid-glass {
+    0% { border-radius: 24px 40px 24px 40px / 40px 24px 40px 24px; }
+    33% { border-radius: 40px 24px 40px 24px / 24px 40px 24px 40px; }
+    66% { border-radius: 30px 30px 50px 25px / 25px 50px 30px 30px; }
+    100% { border-radius: 24px 40px 24px 40px / 40px 24px 40px 24px; }
+}
+
+/* Unique Synchrony for Each Liquid Container */
+.features-grid .feature-card:nth-child(1) { animation-duration: 8s; animation-delay: 0s; }
+.features-grid .feature-card:nth-child(2) { animation-duration: 11s; animation-delay: -2s; }
+.features-grid .feature-card:nth-child(3) { animation-duration: 9s; animation-delay: -4s; }
+.features-grid .feature-card:nth-child(4) { animation-duration: 13s; animation-delay: -1s; }
+.features-grid .feature-card:nth-child(5) { animation-duration: 7s; animation-delay: -3s; }
+.features-grid .feature-card:nth-child(6) { animation-duration: 10s; animation-delay: -5s; }
