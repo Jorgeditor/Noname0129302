@@ -10,6 +10,13 @@
 </head>
 
 <body>
+    <div class="video-bg-container">
+        <video id="hero-video" class="hero-video" autoplay loop muted playsinline>
+            <source src="hero-demo.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
     <div class="bg-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -31,7 +38,10 @@
 
     <main>
         <!-- HERO SECTION -->
-        <section class="hero container">
+        <section class="hero container" style="position: relative;">
+            <button id="video-mute-btn" class="video-mute-btn" aria-label="Toggle Video Sound">
+                <i class="fas fa-volume-mute"></i>
+            </button>
             <div class="hero-content-wrapper">
                 <div class="hero-card">
                     <div class="hero-badges">
@@ -485,6 +495,27 @@
             <p>&copy; 2026 LUCKYTOOLS PRO. AUTOMATING YOUR CREATIVITY.</p>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('hero-video');
+            const muteBtn = document.getElementById('video-mute-btn');
+            
+            if(video && muteBtn) {
+                const icon = muteBtn.querySelector('i');
+                muteBtn.addEventListener('click', () => {
+                    if (video.muted) {
+                        video.muted = false;
+                        icon.classList.remove('fa-volume-mute');
+                        icon.classList.add('fa-volume-up');
+                    } else {
+                        video.muted = true;
+                        icon.classList.remove('fa-volume-up');
+                        icon.classList.add('fa-volume-mute');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
