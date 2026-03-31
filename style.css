@@ -43,7 +43,6 @@ body {
     pointer-events: none;
     -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
-    opacity: 0.45;
 }
 
 .video-bg-container iframe {
