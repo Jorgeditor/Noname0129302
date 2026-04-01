@@ -653,14 +653,14 @@ footer p {
 /* Features Dual Layout (3+1 Grid) */
 .features-dual-layout {
     display: grid;
-    grid-template-columns: repeat(3, 0.65fr) 7fr; /* Cards shifted left, massive video column */
-    gap: 30px; 
-    margin-bottom: 40px;
-    align-items: center; /* Vertical center the video between rows */
-    max-width: 1700px;
-    padding: 0 40px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: repeat(3, 1fr) 9fr; /* Extreme focus on video size */
+    gap: 40px; 
+    margin-bottom: 60px;
+    align-items: center; 
+    width: 100%;
+    max-width: 100%; /* Break the standard container */
+    padding: 0 5%; /* Flexible margin */
+    margin-left: 0; /* Align more to the left */
 }
 
 .features-right-col {
