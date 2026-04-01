@@ -653,7 +653,7 @@ footer p {
 /* Features Dual Layout (3+1 Grid) */
 .features-dual-layout {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) 6fr; /* Fixed base for cards */
+    grid-template-columns: repeat(3, 1fr) 2.5fr; /* Rebalanced to widen cards */
     grid-auto-rows: 1fr; /* Force all rows to be equal height */
     gap: 30px; 
     margin-bottom: 40px;
