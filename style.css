@@ -122,7 +122,7 @@ body::before {
 }
 
 .hero.container {
-    max-width: 1520px; /* Reduced by 20% from 1900px */
+    max-width: 1400px; /* Reduced further */
 }
 
 header {
@@ -177,28 +177,28 @@ main {
 
 .hero-content-wrapper {
     display: flex;
-    align-items: stretch;
-    gap: 32px; /* Reduced from 40px */
+    align-items: center; /* Changed from stretch to ensure ratio is naturally maintained */
+    justify-content: center;
+    gap: 24px; /* Reduced from 32px */
     width: 100%;
 }
 
 .hero-card-column {
-    flex: 0 0 440px; /* Reduced by 20% from 550px */
+    flex: 0 0 390px; /* Reduced from 440px */
 }
 
 .hero-video-column {
-    flex: 1 0 auto;
+    flex: 1; /* Occupy remaining space but will be centered */
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 
 .hero-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     backdrop-filter: blur(10px);
-    padding: 48px; /* Reduced by 20% from 60px */
+    padding: 36px; /* Reduced from 48px */
     border-radius: 24px;
-    height: 100%;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -235,7 +235,7 @@ main {
 
 h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: 45px; /* Reduced from 56px */
+    font-size: 36px; /* Reduced from 45px */
     font-weight: 800;
     margin-bottom: 20px;
     line-height: 1.1;
@@ -258,7 +258,7 @@ h1 span {
 
 .hero-card p {
     color: var(--text-muted);
-    font-size: 14px; /* Reduced from 18px */
+    font-size: 13px; /* Reduced from 14px */
     margin-bottom: 40px;
     max-width: 600px;
 }
@@ -1317,17 +1317,14 @@ footer p {
 }
 /* --- Video Column Styling --- */
 .premium-video-wrapper {
-    height: 100%;
-    min-height: 360px; /* Reduced from 450px */
-    aspect-ratio: 16 / 9;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Strictly 16:9 */
     background: #000;
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
     position: relative;
-    width: auto;
-    margin: 0;
 }
 
 .premium-video-wrapper iframe {
