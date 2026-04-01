@@ -653,10 +653,11 @@ footer p {
 /* Features Dual Layout (3+1 Grid) */
 .features-dual-layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr) 6fr; /* Expanded video share */
-    gap: 30px; /* More breathing room */
+    grid-template-columns: repeat(3, minmax(0, 1fr)) 6fr; /* Fixed base for cards */
+    grid-auto-rows: 1fr; /* Force all rows to be equal height */
+    gap: 30px; 
     margin-bottom: 40px;
-    align-items: center;
+    align-items: stretch; /* Stretch cards to fill row height */
     max-width: 1700px;
     padding: 0 40px;
     margin-left: auto;
@@ -717,12 +718,13 @@ footer p {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 18px; /* Smaller padding */
+    padding: 18px; 
     border-radius: 16px;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
     will-change: transform, box-shadow;
     display: flex;
     flex-direction: column;
+    height: 100%; /* Ensure card takes full row height */
 }
 
 .feature-card:hover {
