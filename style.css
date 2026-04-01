@@ -653,11 +653,11 @@ footer p {
 /* Features Dual Layout (3+1 Grid) */
 .features-dual-layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr) 2fr;
-    gap: 24px;
+    grid-template-columns: repeat(3, 0.8fr) 5.5fr; /* Video is now much larger */
+    gap: 16px; /* Tighter gap */
     margin-bottom: 40px;
-    align-items: stretch;
-    max-width: 1400px;
+    align-items: center; /* Center to match rows better */
+    max-width: 1450px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -716,8 +716,8 @@ footer p {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 24px;
-    border-radius: 20px;
+    padding: 18px; /* Smaller padding */
+    border-radius: 16px;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
     will-change: transform, box-shadow;
     display: flex;
@@ -763,21 +763,21 @@ footer p {
 .feature-card h4 {
     font-family: 'Outfit', sans-serif;
     color: var(--accent-color);
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 15px; /* Smaller font */
+    margin-bottom: 10px;
 }
 
 .feature-card ul {
     list-style: none;
     color: var(--text-color);
-    font-size: 14px;
+    font-size: 12px; /* Smaller font */
 }
 
 .feature-card ul li {
-    margin-bottom: 10px;
+    margin-bottom: 6px; /* Tighter spacing */
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
 }
 
 .feature-card ul li i {
