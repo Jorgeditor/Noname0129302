@@ -661,7 +661,7 @@ footer p {
     width: 95%; /* Use almost full width */
     max-width: 1750px; /* High cap to prevent "huge" feel on super-ultrawide */
     padding: 0;
-    margin: 0 0 0 2.5%; /* Strictly left-aligned with a small safety margin */
+    margin: 0 auto; /* Center the entire wide block */
 }
 
 .features-right-col {
