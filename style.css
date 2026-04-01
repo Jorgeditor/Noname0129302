@@ -122,7 +122,7 @@ body::before {
 }
 
 .hero.container {
-    max-width: 1600px; /* Increased for larger video */
+    max-width: 1900px; /* Expanded to accommodate true 16:9 match height */
 }
 
 header {
@@ -187,9 +187,9 @@ main {
 }
 
 .hero-video-column {
-    flex: 1;
+    flex: 1 0 auto; /* Allow column to grow based on video ratio */
     display: flex;
-    align-items: center; /* Center video vertically within its stretched column */
+    align-items: center;
 }
 
 .hero-card {
@@ -1317,7 +1317,7 @@ footer p {
 }
 /* --- Video Column Styling --- */
 .premium-video-wrapper {
-    height: 100%; /* Height matches card precisely from flex stretch */
+    height: 100%; /* Height matches card precisely */
     aspect-ratio: 16 / 9; /* Strictly 16:9 */
     background: #000;
     border-radius: 20px;
@@ -1325,9 +1325,8 @@ footer p {
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
     position: relative;
-    width: auto; /* Allow width to be determined by aspect-ratio and height */
-    max-width: 100%; /* Ensure it doesn't overflow its column */
-    margin: 0 auto;
+    width: auto;
+    margin: 0;
 }
 
 .premium-video-wrapper iframe {
