@@ -650,22 +650,54 @@ footer p {
     100% { box-shadow: 0 0 0 0 rgba(255, 159, 28, 0); }
 }
 
-/* Features Grid */
+/* Features Grid & Dual Layout */
+.features-dual-layout {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.features-left-col {
+    flex: 1.2;
+}
+
+.features-right-col {
+    flex: 1;
+    position: sticky;
+    top: 120px;
+}
+
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for split layout */
     gap: 24px;
-    margin-bottom: 20px;
     text-align: left;
 }
 
+@media (max-width: 1100px) {
+    .features-dual-layout {
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+    
+    .features-right-col {
+        position: static;
+        width: 100%;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
 .feature-card {
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid var(--card-border);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 30px;
-    border-radius: 16px;
+    border-radius: 20px;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
     will-change: transform, box-shadow;
 }
@@ -673,7 +705,37 @@ footer p {
 .feature-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+/* Premium Video Column Styles */
+.premium-video-wrapper-v2 {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.premium-video-wrapper-v2 iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.ambient-video-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(255, 159, 28, 0.15) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(40px);
 }
 
 .feature-card h4 {
