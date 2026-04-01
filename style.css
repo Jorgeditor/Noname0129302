@@ -237,7 +237,7 @@ main {
 
 h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: 36px; /* Reduced from 45px */
+    font-size: 34px; /* Reduced from 36px to prevent wrapping in the hero card */
     font-weight: 800;
     margin-bottom: 20px;
     line-height: 1.1;
@@ -1427,7 +1427,7 @@ footer p {
     }
     
     h1 {
-        font-size: 64px;
+        font-size: 60px; /* Reduced from 64px for better fit */
     }
     
     .hero-card p {
