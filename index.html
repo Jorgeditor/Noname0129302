@@ -63,7 +63,7 @@
                         <div class="hero-actions">
                             <div class="main-actions">
                                 <div class="price-box">
-                                    <div class="coming-soon bounce-anim">Limited Time Deal</div>
+                                    <div class="coming-soon bounce-anim">Limited Time Deal <span id="dealTimer">7d 00h 00m</span></div>
                                     <span class="price-strikethrough">$149.99</span>
                                     <span class="price-current">$69.99</span>
                                 </div>
@@ -714,6 +714,28 @@
                 });
             });
         }
+
+        // --- LIMITED TIME DEAL TIMER (Isolated for easy removal) ---
+        function updateDealTimer() {
+            const timerElement = document.getElementById('dealTimer');
+            if (!timerElement) return;
+
+            // Cycle: Counts down 12 hours from 7 days, then resets (6.5 days to 7 days)
+            const cycleDuration = 12 * 60 * 60 * 1000; 
+            const totalStart = 7 * 24 * 60 * 60 * 1000;
+            const elapsedInCycle = Date.now() % cycleDuration;
+            const remainingMs = totalStart - elapsedInCycle;
+
+            const days = Math.floor(remainingMs / (24 * 60 * 60 * 1000));
+            const hours = Math.floor((remainingMs % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            const minutes = Math.floor((remainingMs % (60 * 60 * 1000)) / (60 * 1000));
+            const seconds = Math.floor((remainingMs % (60 * 1000)) / 1000);
+
+            timerElement.textContent = `${days}d ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
+        }
+        
+        setInterval(updateDealTimer, 1000);
+        updateDealTimer();
     </script>
 </body>
 </html>

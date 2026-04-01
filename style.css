@@ -483,6 +483,20 @@ footer p {
     left: 50%;
     transform: translateX(-50%); /* Properly center even if text length changes */
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#dealTimer {
+    font-family: 'Outfit', sans-serif;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #fff;
+    margin-left: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .bounce-anim {
