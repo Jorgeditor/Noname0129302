@@ -1439,13 +1439,11 @@ footer p {
         font-size: 22px;
     }
 }
-/* --- Professional Footer Styles --- */
+/* --- Professional Footer Styles (Unified) --- */
 .site-footer {
     position: relative;
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    padding: 100px 0 0 0;
+    padding: 0;
     margin-top: 150px;
-    border-top: 1px solid rgba(255, 159, 28, 0.1);
     overflow: hidden;
 }
 
@@ -1462,11 +1460,20 @@ footer p {
     pointer-events: none;
 }
 
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 80px 0 40px 0;
+    border-top: 1px solid rgba(255, 159, 28, 0.15);
+    backdrop-filter: blur(20px);
+}
+
 .footer-content {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 80px;
-    padding-bottom: 80px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 40px;
 }
 
 .footer-logo {
@@ -1564,15 +1571,11 @@ footer p {
     transform: translateX(5px);
 }
 
-.footer-bottom {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 40px 0;
+.copyright-text {
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
 }
 
-.footer-bottom p {
+.copyright-text p {
     color: var(--text-muted);
     font-size: 13px;
     letter-spacing: 1.5px;
