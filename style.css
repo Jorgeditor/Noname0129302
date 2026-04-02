@@ -581,6 +581,7 @@ footer p {
     gap: 15px;
     margin-bottom: 0;
     position: relative; /* relative for absolute badge */
+    min-width: 230px; /* Restricts the layout from collapsing despite shorter $$$ placeholder */
 }
 
 .price-strikethrough {
