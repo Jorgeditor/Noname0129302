@@ -653,7 +653,7 @@ footer p {
 /* Features Dual Layout (3+1 Grid) */
 .features-dual-layout {
     display: grid;
-    grid-template-columns: repeat(3, 0.7fr) 4.5fr; /* Video ligeramente más grande en resoluciones 2k para empatar altura exacta de tarjetas */
+    grid-template-columns: repeat(3, 0.75fr) 3.8fr; /* Balanced grid space so 2k font has room without severe wrapping */
     grid-auto-rows: 1fr; /* Perfect row symmetry */
     gap: clamp(10px, 1.17vw, 30px); 
     margin-bottom: 60px; /* Perfectly balanced separation */
