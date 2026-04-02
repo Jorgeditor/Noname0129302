@@ -1423,7 +1423,7 @@ html[_mstlang] .feature-card ul li {
 /* FAQ Section */
 .faq-section {
     max-width: 750px; /* Reduced to make them thinner */
-    margin: 0 auto;
+    margin: -20px auto 30px auto;
 }
 
 .faq-section h2 {
