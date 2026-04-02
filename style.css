@@ -2426,3 +2426,61 @@ body.nav-open {
     .footer-nav a, .footer-support a { font-size: 14px; }
     .copyright-text p { font-size: 11px; letter-spacing: 1px; }
 }
+
+/* =====================================================
+   MOBILE PERFORMANCE OVERRIDES (60FPS Android Optimization)
+   Disables heavy compositing layers (backdrop-filter, filter: blur, huge shadows)
+   ===================================================== */
+@media (max-width: 768px) {
+    /* 1. Remove Glassmorphism (backdrop-filter is extremely laggy on Android GPU scroll) */
+    header,
+    .mobile-nav-overlay,
+    .feature-card,
+    .license-card,
+    .review-card,
+    .hero-card,
+    .faq-item {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background-color: #0c0c0e !important; /* Solid matte fallback to prevent transparency lag */
+    }
+
+    /* Header must be fully opaque to hide content scrolling behind it */
+    header { border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; background-color: #050505 !important; }
+    .mobile-nav-overlay { background-color: #050505 !important; }
+
+    /* 2. Discard heavy filter blurs completely (massive GPU bounding box repaints) */
+    .ambient-glow,
+    .ambient-video-glow,
+    .glow-orb {
+        display: none !important; 
+    }
+
+    /* 3. Simplify massive box-shadow spreads */
+    .premium-video-wrapper-v2,
+    .premium-video-wrapper,
+    .feature-card,
+    .review-card {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    .feature-card:hover,
+    .review-card:hover {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7) !important;
+    }
+
+    .swap-hint {
+        box-shadow: 0 4px 10px rgba(255, 159, 28, 0.4) !important;
+    }
+
+    /* 4. Force Hardware Acceleration on moving/heavy elements */
+    .reviews-track,
+    .reviews-marquee,
+    .video-stack,
+    .premium-video-wrapper,
+    .coming-soon {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0); 
+        will-change: transform;
+    }
+}
