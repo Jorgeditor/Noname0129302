@@ -2043,8 +2043,7 @@ body.nav-open {
     }
 
     /* === VIDEO BACKGROUND (index only) === */
-    .video-bg-container { display: none; }
-    .seam-hider { display: none; }
+    /* Video is visible on mobile */
 
     /* === MAIN === */
     main { padding-top: 30px; }
