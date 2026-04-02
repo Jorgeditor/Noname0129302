@@ -667,9 +667,10 @@ footer p {
 /* 1080p Optimization (Scales down for roughly 1920px and below) */
 @media (max-width: 1600px) {
     .features-dual-layout {
-        max-width: 1300px;
-        grid-template-columns: repeat(3, 1fr) 4fr; /* Slightly wider cards for smaller screens */
-        gap: 20px;
+        max-width: 1150px; /* Further reduced to feel more spacious on 1080p */
+        grid-template-columns: repeat(3, 1fr) 3.5fr; /* Slightly less dominant video for better balance */
+        gap: 25px;
+        padding: 0 20px;
     }
 }
 
