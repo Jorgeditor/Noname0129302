@@ -25,7 +25,22 @@
             <a href="contact.html">Contact</a>
             <a href="licenses.html">Licenses</a>
         </nav>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <a href="index.html">Home</a>
+        <div class="nav-overlay-divider"></div>
+        <a href="about.html">About</a>
+        <div class="nav-overlay-divider"></div>
+        <a href="contact.html">Contact</a>
+        <div class="nav-overlay-divider"></div>
+        <a href="licenses.html">Licenses</a>
+    </div>
 
     <main class="licenses-main">
         <!-- Manage Licenses Portal Section -->
@@ -182,6 +197,43 @@
                 });
             });
         }
+
+        // --- HAMBURGER MENU ---
+        (function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+            if (!hamburgerBtn || !mobileNavOverlay) return;
+
+            function openNav() {
+                mobileNavOverlay.style.display = 'flex';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        hamburgerBtn.classList.add('active');
+                        mobileNavOverlay.classList.add('open');
+                        document.body.classList.add('nav-open');
+                    });
+                });
+            }
+
+            function closeNav() {
+                hamburgerBtn.classList.remove('active');
+                mobileNavOverlay.classList.remove('open');
+                document.body.classList.remove('nav-open');
+                setTimeout(() => {
+                    if (!mobileNavOverlay.classList.contains('open')) {
+                        mobileNavOverlay.style.display = 'none';
+                    }
+                }, 420);
+            }
+
+            hamburgerBtn.addEventListener('click', () => {
+                mobileNavOverlay.classList.contains('open') ? closeNav() : openNav();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileNavOverlay.classList.contains('open')) closeNav();
+            });
+        })();
     </script>
 </body>
 </html>
