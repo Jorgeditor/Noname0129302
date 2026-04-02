@@ -812,7 +812,7 @@
             ytIframes.forEach(iframe => {
                 let url = iframe.getAttribute('data-yt-src');
                 if (isMobile) {
-                    url = url.replace('vq=hd1080', 'vq=480p');
+                    url = url.replace('vq=hd1080', 'vq=360p');
                 }
                 iframe.src = url;
             });
