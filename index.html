@@ -760,10 +760,13 @@
         // --- TRANSLATION DETECTOR (EASTER EGG) ---
         const observerTranslate = new MutationObserver(() => {
             const htmlTag = document.documentElement;
-            // Detect Chrome ('translated-ltr') and Edge ('_mstlang') translation footprints
+            const currentLang = htmlTag.getAttribute('lang');
+            
+            // Detect Chrome ('translated-ltr'), Edge ('_mstlang'), or universal lang change (Opera/Brave)
             const isTranslated = htmlTag.classList.contains('translated-ltr') || 
                                  htmlTag.classList.contains('translated-rtl') || 
-                                 htmlTag.hasAttribute('_mstlang');
+                                 htmlTag.hasAttribute('_mstlang') ||
+                                 (currentLang && currentLang !== 'en');
             
             if (isTranslated) {
                 const powerVideo = document.getElementById('powerVideoRef');
