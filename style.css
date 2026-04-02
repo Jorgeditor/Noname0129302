@@ -661,6 +661,7 @@ footer p {
     width: clamp(300px, 72vw, 1750px); /* Fluid window scaling to prevent asphyxiation on 1080p */
     padding: 0;
     margin: 0 auto 60px; /* Centered with perfectly balanced bottom margin */
+    zoom: 0.7; /* Escala global 30% más chica para video y casillas (2k y 1080p) */
 }
 
 /* 1080p Optimization - Shrink cards globally to allow them to match video height without text-wrap bloat */
