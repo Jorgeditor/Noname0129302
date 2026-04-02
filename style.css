@@ -656,12 +656,12 @@ footer p {
     grid-template-columns: repeat(3, 0.45fr) 4.5fr; /* Shifted left, massive video space */
     grid-auto-rows: 1fr; /* Perfect row symmetry */
     gap: 30px; 
-    margin-bottom: 120px; /* Increased to avoid overlap with following sections */
+    margin-bottom: 60px; /* Perfectly balanced separation */
     align-items: center; 
     width: 95%; /* Use almost full width */
     max-width: 1750px; /* High cap to prevent "huge" feel on super-ultrawide */
     padding: 0;
-    margin: 0 auto 120px; /* Center with a generous bottom margin */
+    margin: 0 auto 60px; /* Centered with perfectly balanced bottom margin */
 }
 
 .features-right-col {
