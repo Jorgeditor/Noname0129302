@@ -2212,32 +2212,51 @@ body.nav-open {
 
     /* === FEATURES DUAL LAYOUT (Power of LuckyTools) === */
     .features-dual-layout {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: repeat(3, 1fr) !important;
         width: 100% !important;
-        padding: 0 16px !important;
+        padding: 0 10px !important;
         zoom: 1 !important;
-        gap: 14px !important;
-        margin-bottom: 40px !important;
+        gap: 8px !important;
+        margin-bottom: 30px !important;
     }
 
     .features-right-col {
-        grid-column: 1 !important;
+        grid-column: 1 / span 3 !important;
         grid-row: auto !important;
         order: -1; /* Show video first on mobile */
     }
 
     .feature-card {
-        padding: 18px !important;
-        border-radius: 14px !important;
+        padding: 12px 10px !important;
+        border-radius: 12px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: 140px;
     }
 
     .feature-card h4 {
-        font-size: 15px !important;
-        margin-bottom: 10px !important;
+        font-size: 13px !important;
+        margin-bottom: 8px !important;
+        line-height: 1.2;
     }
 
     .feature-card ul {
-        font-size: 13px !important;
+        font-size: 10px !important;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .feature-card ul li {
+        margin-bottom: 4px;
+        display: flex;
+        gap: 4px;
+        align-items: flex-start;
+    }
+
+    .feature-card i {
+        font-size: 9px;
+        margin-top: 2px;
     }
 
     .dual-column-list {
