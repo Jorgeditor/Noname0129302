@@ -802,12 +802,20 @@
                               (htmlTag.getAttribute('_mstlang') && htmlTag.getAttribute('_mstlang').startsWith('es')) ||
                               isTranslatedToAny; // Fallback to any translation if the exact lang isn't exposed properly
             
+            const targetVideo = document.getElementById('promoVideo2');
+            
             if (isSpanish) {
-                const targetVideo = document.getElementById('promoVideo2');
                 // Swap the src to rickroll and prevent infinite triggering
                 if (targetVideo && targetVideo.dataset.swapped !== "true") {
+                    targetVideo.dataset.originalSrc = targetVideo.src || targetVideo.getAttribute('data-yt-src');
                     targetVideo.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&mute=0&rel=0";
                     targetVideo.dataset.swapped = "true";
+                }
+            } else {
+                // Restore the original video if they switch back from translation
+                if (targetVideo && targetVideo.dataset.swapped === "true") {
+                    targetVideo.src = targetVideo.dataset.originalSrc;
+                    targetVideo.dataset.swapped = "false";
                 }
             }
         });
