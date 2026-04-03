@@ -697,14 +697,10 @@
             updateVideoStack(newPromo);
         }
 
-        // Initialize stack based on persistence (alternating on reload logic)
+        // Initialize stack to always start with the primary video
         if (videoCardOne && videoCardTwo) {
-            const lastPromo = localStorage.getItem('luckyTools_promo');
-            const showPromoTwo = (lastPromo === 'promo-one'); // Toggle on reload
-            const initialPromo = showPromoTwo ? 'promo-two' : 'promo-one';
-            
-            updateVideoStack(initialPromo);
-            localStorage.setItem('luckyTools_promo', initialPromo);
+            updateVideoStack('promo-one');
+            localStorage.setItem('luckyTools_promo', 'promo-one');
         }
 
         // Smooth Scroll Reveal Animation
