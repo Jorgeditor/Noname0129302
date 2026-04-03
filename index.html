@@ -814,29 +814,50 @@
             if (isSpanish) {
                 if (targetVideo && targetVideo.dataset.swapped !== "true") {
                     let currentTime = 0;
+                    let isPlaying = false;
                     if (ytPlayer2 && typeof ytPlayer2.getCurrentTime === 'function') {
                         try { currentTime = ytPlayer2.getCurrentTime(); } catch (e) {}
+                        try {
+                            const state = ytPlayer2.getPlayerState();
+                            if (state === 1 || state === 3) isPlaying = true;
+                        } catch (e) {}
                     }
                     targetVideo.dataset.originalSrc = targetVideo.src || targetVideo.getAttribute('data-yt-src');
                     
                     if (ytPlayer2 && typeof ytPlayer2.cueVideoById === "function") {
-                        ytPlayer2.cueVideoById({'videoId': 'dQw4w9WgXcQ', 'startSeconds': currentTime});
+                        if (isPlaying) {
+                            ytPlayer2.loadVideoById({'videoId': 'dQw4w9WgXcQ', 'startSeconds': currentTime});
+                        } else {
+                            ytPlayer2.cueVideoById({'videoId': 'dQw4w9WgXcQ', 'startSeconds': currentTime});
+                        }
                     } else {
+                        // Fallback logic
                         const startParam = currentTime > 0 ? `&start=${Math.floor(currentTime)}` : '';
-                        targetVideo.src = `https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=1&mute=0&rel=0&enablejsapi=1${startParam}`;
+                        const autoplayParam = isPlaying ? `&autoplay=1` : `&autoplay=0`;
+                        targetVideo.src = `https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&mute=0&rel=0&enablejsapi=1${startParam}${autoplayParam}`;
                     }
                     targetVideo.dataset.swapped = "true";
                 }
             } else {
                 if (targetVideo && targetVideo.dataset.swapped === "true") {
                     let currentTime = 0;
+                    let isPlaying = false;
                     if (ytPlayer2 && typeof ytPlayer2.getCurrentTime === 'function') {
                         try { currentTime = ytPlayer2.getCurrentTime(); } catch (e) {}
+                        try {
+                            const state = ytPlayer2.getPlayerState();
+                            if (state === 1 || state === 3) isPlaying = true;
+                        } catch (e) {}
                     }
                     
                     if (ytPlayer2 && typeof ytPlayer2.cueVideoById === "function") {
-                        ytPlayer2.cueVideoById({'videoId': 'Ib2-zb7CATo', 'startSeconds': currentTime});
+                        if (isPlaying) {
+                            ytPlayer2.loadVideoById({'videoId': 'Ib2-zb7CATo', 'startSeconds': currentTime});
+                        } else {
+                            ytPlayer2.cueVideoById({'videoId': 'Ib2-zb7CATo', 'startSeconds': currentTime});
+                        }
                     } else {
+                        // Fallback
                         let baseSrc = targetVideo.dataset.originalSrc || targetVideo.getAttribute('data-yt-src');
                         targetVideo.src = baseSrc;
                     }
