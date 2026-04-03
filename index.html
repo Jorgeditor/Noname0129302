@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    <span id="translation-canary" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;" translate="yes">Translate this sentence to see the magic.</span>
     <div class="video-bg-container">
         <iframe 
             data-yt-src="https://www.youtube.com/embed/zbo6jUGrwdk?autoplay=1&mute=1&loop=1&playlist=zbo6jUGrwdk&controls=0&showinfo=0&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3&playsinline=1&vq=hd1080" 
@@ -799,19 +800,16 @@
 
 
         // --- TRANSLATION DETECTOR (EASTER EGG) ---
+        const canary = document.getElementById('translation-canary');
         const observerTranslate = new MutationObserver(() => {
-            const htmlTag = document.documentElement;
-            const currentLang = htmlTag.getAttribute('lang');
-            
-            // Specific flag for Spanish Rickroll trigger (broader detection)
-            const isTranslatedToAny = htmlTag.classList.contains('translated-ltr') || htmlTag.classList.contains('translated-rtl');
-            const isSpanish = (currentLang && currentLang.startsWith('es')) || 
-                              (htmlTag.getAttribute('_mstlang') && htmlTag.getAttribute('_mstlang').startsWith('es')) ||
-                              isTranslatedToAny; 
+            if (!canary) return;
+            const currentText = canary.textContent || canary.innerText;
+            // Native cross-browser heuristic translation detection
+            const isTranslated = currentText.trim() !== "Translate this sentence to see the magic."; 
             
             const targetVideo = document.getElementById('promoVideo2');
             
-            if (isSpanish) {
+            if (isTranslated) {
                 if (targetVideo && targetVideo.dataset.swapped !== "true") {
                     let currentTime = 0;
                     let isPlaying = false;
@@ -866,11 +864,10 @@
             }
         });
 
-        // Tell observer to exclusively watch the <html> tag for class or _mstlang attribute changes
-        observerTranslate.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['class', 'lang', '_mstlang'] 
-        });
+        // Tell observer to exclusively watch the canary text node
+        if (canary) {
+            observerTranslate.observe(canary, { characterData: true, childList: true, subtree: true });
+        }
 
 
         // --- YOUTUBE MOBILE RESOLUTION DETECTOR ---
