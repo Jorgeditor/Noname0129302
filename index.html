@@ -117,6 +117,7 @@
                             <iframe 
                                 id="promoVideo2"
                                 loading="lazy"
+                                translate="no"
                                 data-yt-src="https://www.youtube.com/embed/Ib2-zb7CATo?controls=1&mute=0&autoplay=0&rel=0&modestbranding=1&vq=hd1080" 
                                 title="LuckyTools PROMO TWO"
                                 frameborder="0" 
@@ -384,7 +385,7 @@
                 </div>
                 
                 <div class="features-right-col reveal reveal-right">
-                    <div class="premium-video-wrapper-v2">
+                    <div class="premium-video-wrapper-v2" translate="no">
                         <video 
                             id="powerVideoRef"
                             autoplay
@@ -781,9 +782,11 @@
             const htmlTag = document.documentElement;
             const currentLang = htmlTag.getAttribute('lang');
             
-            // Specific flag for Spanish Rickroll trigger
+            // Specific flag for Spanish Rickroll trigger (broader detection)
+            const isTranslatedToAny = htmlTag.classList.contains('translated-ltr') || htmlTag.classList.contains('translated-rtl');
             const isSpanish = (currentLang && currentLang.startsWith('es')) || 
-                              (htmlTag.getAttribute('_mstlang') && htmlTag.getAttribute('_mstlang').startsWith('es'));
+                              (htmlTag.getAttribute('_mstlang') && htmlTag.getAttribute('_mstlang').startsWith('es')) ||
+                              isTranslatedToAny; // Fallback to any translation if the exact lang isn't exposed properly
             
             if (isSpanish) {
                 const targetVideo = document.getElementById('promoVideo2');
