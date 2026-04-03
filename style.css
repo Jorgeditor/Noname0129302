@@ -760,11 +760,13 @@ html[_mstlang] .feature-card ul li {
     margin: auto 0; /* Center vertically in the spanning cell */
 }
 
-.premium-video-wrapper-v2 iframe {
+.premium-video-wrapper-v2 iframe,
+.premium-video-wrapper-v2 video {
     width: 100%;
     height: 100%;
     border: none;
     display: block;
+    object-fit: cover;
 }
 
 @media (max-width: 1200px) {
@@ -822,10 +824,12 @@ html[_mstlang] .feature-card ul li {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.premium-video-wrapper-v2 iframe {
+.premium-video-wrapper-v2 iframe,
+.premium-video-wrapper-v2 video {
     width: 100%;
     height: 100%;
     border: none;
+    object-fit: cover;
 }
 
 .ambient-video-glow {

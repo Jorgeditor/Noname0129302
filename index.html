@@ -385,15 +385,16 @@
                 
                 <div class="features-right-col reveal reveal-right">
                     <div class="premium-video-wrapper-v2">
-                        <iframe 
+                        <video 
                             id="powerVideoRef"
-                            loading="lazy"
-                            data-yt-src="https://www.youtube.com/embed/XWkc1OH7DwE?vq=hd1080&modestbranding=1&rel=0" 
-                            title="The Power of LuckyTools"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            class="feature-image">
+                            <source src="extrasfuctions.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                         <div class="ambient-video-glow"></div>
                     </div>
                 </div>
@@ -791,9 +792,9 @@
             
             if (isSpanish) {
                 const powerVideo = document.getElementById('powerVideoRef');
-                // Swap the src to rickroll and prevent infinite triggering
+                // Pause video as easter egg when translated to Spanish
                 if (powerVideo && powerVideo.dataset.swapped !== "true") {
-                    powerVideo.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0";
+                    powerVideo.pause();
                     powerVideo.dataset.swapped = "true";
                 }
             }
