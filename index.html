@@ -107,7 +107,7 @@
                         <div id="videoCardOne" class="premium-video-wrapper video-layer" onclick="this.classList.contains('background') && swapVideos()">
                             <iframe 
                                 id="promoVideo1"
-                                data-yt-src="https://www.youtube.com/embed/BXtfIg8l4tM?controls=1&mute=0&autoplay=0&rel=0&modestbranding=1&vq=hd1080" 
+                                data-yt-src="https://www.youtube.com/embed/BXtfIg8l4tM?controls=1&mute=0&autoplay=0&rel=0&modestbranding=1&vq=hd1080&enablejsapi=1" 
                                 title="LuckyTools PROMO ONE"
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -120,7 +120,7 @@
                                 id="promoVideo2"
                                 loading="lazy"
                                 translate="no"
-                                data-yt-src="https://www.youtube.com/embed/Ib2-zb7CATo?controls=1&mute=0&autoplay=0&rel=0&modestbranding=1&vq=hd1080" 
+                                data-yt-src="https://www.youtube.com/embed/Ib2-zb7CATo?controls=1&mute=0&autoplay=0&rel=0&modestbranding=1&vq=hd1080&enablejsapi=1" 
                                 title="LuckyTools PROMO TWO"
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -671,7 +671,14 @@
         </div>
     </footer>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
+        // YouTube Iframe API integration for exact time tracking
+        let ytPlayer2 = null;
+        function onYouTubeIframeAPIReady() {
+            ytPlayer2 = new YT.Player('promoVideo2');
+        }
+
         // Interactive Stacked Video System
         const videoCardOne = document.getElementById('videoCardOne');
         const videoCardTwo = document.getElementById('videoCardTwo');
@@ -800,21 +807,39 @@
             const isTranslatedToAny = htmlTag.classList.contains('translated-ltr') || htmlTag.classList.contains('translated-rtl');
             const isSpanish = (currentLang && currentLang.startsWith('es')) || 
                               (htmlTag.getAttribute('_mstlang') && htmlTag.getAttribute('_mstlang').startsWith('es')) ||
-                              isTranslatedToAny; // Fallback to any translation if the exact lang isn't exposed properly
+                              isTranslatedToAny; 
             
             const targetVideo = document.getElementById('promoVideo2');
             
             if (isSpanish) {
-                // Swap the src to rickroll and prevent infinite triggering
                 if (targetVideo && targetVideo.dataset.swapped !== "true") {
+                    let currentTime = 0;
+                    if (ytPlayer2 && typeof ytPlayer2.getCurrentTime === 'function') {
+                        try { currentTime = ytPlayer2.getCurrentTime(); } catch (e) {}
+                    }
                     targetVideo.dataset.originalSrc = targetVideo.src || targetVideo.getAttribute('data-yt-src');
-                    targetVideo.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&mute=0&rel=0";
+                    
+                    if (ytPlayer2 && typeof ytPlayer2.loadVideoById === "function") {
+                        ytPlayer2.loadVideoById({'videoId': 'dQw4w9WgXcQ', 'startSeconds': currentTime});
+                    } else {
+                        const startParam = currentTime > 0 ? `&start=${Math.floor(currentTime)}` : '';
+                        targetVideo.src = `https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=1&mute=0&rel=0&enablejsapi=1${startParam}`;
+                    }
                     targetVideo.dataset.swapped = "true";
                 }
             } else {
-                // Restore the original video if they switch back from translation
                 if (targetVideo && targetVideo.dataset.swapped === "true") {
-                    targetVideo.src = targetVideo.dataset.originalSrc;
+                    let currentTime = 0;
+                    if (ytPlayer2 && typeof ytPlayer2.getCurrentTime === 'function') {
+                        try { currentTime = ytPlayer2.getCurrentTime(); } catch (e) {}
+                    }
+                    
+                    if (ytPlayer2 && typeof ytPlayer2.loadVideoById === "function") {
+                        ytPlayer2.loadVideoById({'videoId': 'Ib2-zb7CATo', 'startSeconds': currentTime});
+                    } else {
+                        let baseSrc = targetVideo.dataset.originalSrc || targetVideo.getAttribute('data-yt-src');
+                        targetVideo.src = baseSrc;
+                    }
                     targetVideo.dataset.swapped = "false";
                 }
             }
