@@ -309,7 +309,7 @@ h1 span {
     background-clip: text;
     color: transparent;
     animation: gradientFlow 5s linear infinite;
-    display: inline-block;
+    display: block; /* Changed to block to prevent container jumping during rotation */
     white-space: nowrap; /* Forces "Creative [Word]" to stay on a single line */
 }
 
