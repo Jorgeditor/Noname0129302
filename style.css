@@ -234,6 +234,59 @@ main {
 }
 
 
+.support-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 159, 28, 0.05);
+    border: 1px solid rgba(255, 159, 28, 0.15);
+    padding: 10px 20px;
+    border-radius: 100px;
+    margin-bottom: 30px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+}
+
+.support-badge:hover {
+    background: rgba(255, 159, 28, 0.1);
+    border-color: var(--accent-color);
+    transform: translateX(8px);
+    box-shadow: 0 0 30px rgba(255, 159, 28, 0.1);
+}
+
+.support-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(255, 159, 28, 0.3);
+}
+
+.support-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.support-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.support-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-color);
+    line-height: 1;
+}
+
 .hero-icon {
     font-size: 32px;
     color: var(--accent-color);
