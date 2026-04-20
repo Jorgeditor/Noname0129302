@@ -309,7 +309,7 @@ h1 span {
     background-clip: text;
     color: transparent;
     animation: gradientFlow 5s linear infinite;
-    display: block; /* Changed to block to prevent container jumping during rotation */
+    display: inline-block; /* Changed back to inline-block as stability is now handled by .word-rotate min-width */
     white-space: nowrap; /* Forces "Creative [Word]" to stay on a single line */
 }
 
@@ -318,6 +318,7 @@ h1 span {
     display: inline-block;
     position: relative;
     transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    min-width: 140px; /* Ensures space for the longest word like "Creators" from the start */
 }
 
 .word-rotate.exit {
