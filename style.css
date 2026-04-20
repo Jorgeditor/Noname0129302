@@ -296,7 +296,7 @@ main {
 
 h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: 34px; /* Reduced from 36px to prevent wrapping in the hero card */
+    font-size: 30px; /* Reduced to prevent wrapping as requested */
     font-weight: 800;
     margin-bottom: 20px;
     line-height: 1.1;
