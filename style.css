@@ -1025,6 +1025,12 @@ html[_mstlang] .feature-card ul li {
     position: relative;
     width: 100%;
     padding: 20px 0;
+    cursor: grab;
+    user-select: none;
+}
+
+.reviews-marquee:active {
+    cursor: grabbing;
 }
 
 /* Optional Edge fading effect */
@@ -1085,6 +1091,18 @@ html[_mstlang] .feature-card ul li {
     border-color: var(--accent-color);
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(255, 159, 28, 0.2);
+}
+
+.reviews-track.is-dragging {
+    transition: none !important;
+}
+
+.review-card a {
+    pointer-events: auto;
+}
+
+.reviews-marquee.is-dragging .review-card a {
+    pointer-events: none;
 }
 
 /* Quote marks removed per design update */

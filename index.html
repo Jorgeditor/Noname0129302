@@ -1069,6 +1069,93 @@
                 if (e.key === 'Escape' && mobileNavOverlay.classList.contains('open')) closeNav();
             });
         })();
+
+        // --- DRAGGABLE REVIEWS MARQUEE ---
+        (function() {
+            const track = document.querySelector('.reviews-track');
+            const marquee = document.querySelector('.reviews-marquee');
+            if (!track || !marquee) return;
+
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
+            let currentX = 0;
+            let speed = 0.6; // Speed of auto-scroll
+            let animationId;
+
+            // Pause animation on hover
+            let isHovered = false;
+            marquee.addEventListener('mouseenter', () => isHovered = true);
+            marquee.addEventListener('mouseleave', () => isHovered = false);
+
+            // Disable CSS animation
+            track.style.animation = 'none';
+
+            function getLoopPoint() {
+                // Each set of reviews is half the track plus half the gap
+                return (track.offsetWidth + 20) / 2;
+            }
+
+            function update() {
+                if (!isDragging && !isHovered) {
+                    currentX -= speed;
+                    const loopPoint = getLoopPoint();
+                    if (Math.abs(currentX) >= loopPoint) {
+                        currentX = 0;
+                    }
+                    track.style.transform = `translateX(${currentX}px)`;
+                }
+                animationId = requestAnimationFrame(update);
+            }
+
+            update();
+
+            // Drag Logic
+            const startDrag = (e) => {
+                isDragging = true;
+                marquee.classList.add('is-dragging');
+                startX = (e.pageX || e.touches[0].pageX);
+                scrollLeft = currentX;
+            };
+
+            const stopDrag = () => {
+                if (!isDragging) return;
+                isDragging = false;
+                marquee.classList.remove('is-dragging');
+            };
+
+            const moveDrag = (e) => {
+                if (!isDragging) return;
+                
+                const x = (e.pageX || e.touches[0].pageX);
+                const walk = (x - startX) * 1.5; 
+                currentX = scrollLeft + walk;
+
+                const loopPoint = getLoopPoint();
+                
+                // Infinite seamless wrap
+                if (currentX > 0) {
+                    currentX -= loopPoint;
+                    startX = x;
+                    scrollLeft = currentX;
+                } else if (Math.abs(currentX) >= loopPoint) {
+                    currentX += loopPoint;
+                    startX = x;
+                    scrollLeft = currentX;
+                }
+
+                track.style.transform = `translateX(${currentX}px)`;
+            };
+
+            marquee.addEventListener('mousedown', startDrag);
+            marquee.addEventListener('touchstart', startDrag, { passive: true });
+
+            window.addEventListener('mouseup', stopDrag);
+            window.addEventListener('touchend', stopDrag);
+
+            window.addEventListener('mousemove', moveDrag);
+            window.addEventListener('touchmove', moveDrag, { passive: true });
+        })();
     </script>
     <!-- --- PREMIUM COOKIE BANNER (SOLID DESIGN) --- -->
     <div id="cookieBanner" class="cookie-banner" style="display: none;">
