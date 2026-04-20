@@ -713,12 +713,12 @@ footer p {
 /* Features Dual Layout (3+1 Grid) */
 .features-dual-layout {
     display: grid;
-    grid-template-columns: repeat(3, 0.75fr) 3.8fr; /* Balanced grid space so 2k font has room without severe wrapping */
+    grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns to center containers */
     grid-auto-rows: 1fr; /* Perfect row symmetry */
     gap: clamp(10px, 1.17vw, 30px); 
     margin-bottom: 60px; /* Perfectly balanced separation */
     align-items: center; 
-    width: clamp(300px, 72vw, 1750px); /* Fluid window scaling to prevent asphyxiation on 1080p */
+    width: clamp(300px, 60vw, 1200px); /* Adjusted width for 3-column layout without video */
     padding: 0;
     margin: 0 auto 60px; /* Centered with perfectly balanced bottom margin */
     zoom: 0.84; /* Escala global ajustada a un tamaño 14% mayor que el ensayo anterior (84% del original) */
@@ -727,8 +727,8 @@ footer p {
 /* 1080p Optimization - Shrink cards globally to allow them to match video height without text-wrap bloat */
 @media (max-width: 1950px) {
     .features-dual-layout {
-        width: 85vw; /* Slightly wider layout so cards breathe horizontally */
-        grid-template-columns: repeat(3, 0.8fr) 3.8fr; /* Granting slightly more fractional width to cards */
+        width: 75vw; /* Adjusted for 3 columns */
+        grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns */
         gap: 15px;
     }
     .feature-card {
@@ -752,8 +752,8 @@ footer p {
 
 @media (max-width: 1600px) {
     .features-dual-layout {
-        width: 92vw; 
-        grid-template-columns: repeat(3, 1fr) 3.5fr; 
+        width: 85vw; 
+        grid-template-columns: repeat(3, 1fr); 
         gap: 15px;
         padding: 0 20px;
     }
@@ -765,7 +765,7 @@ html[lang]:not([lang="en"]) .features-dual-layout,
 html.translated-ltr .features-dual-layout, 
 html.translated-rtl .features-dual-layout,
 html[_mstlang] .features-dual-layout {
-    grid-template-columns: repeat(3, 1fr) 2.8fr !important; /* Wider columns for translated text to prevent vertical growth */
+    grid-template-columns: repeat(3, 1fr) !important; /* Adjusted for 3 columns */
     gap: 10px !important;
 }
 
@@ -802,6 +802,7 @@ html[_mstlang] .feature-card ul li {
 }
 
 .features-right-col {
+    display: none; /* Hiding the video as requested */
     grid-column: 4;
     grid-row: 1 / span 2;
     display: flex;
