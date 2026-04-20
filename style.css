@@ -1146,6 +1146,13 @@ html[_mstlang] .feature-card ul li {
     font-family: 'Outfit', sans-serif;
 }
 
+.reviewer-role {
+    font-size: 11px;
+    color: var(--accent-color);
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
 /* Reviewer role removed per design update */
 
 
