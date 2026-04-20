@@ -296,7 +296,7 @@ main {
 
 h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: 28px; /* Further reduced to ensure it fits without wrapping */
+    font-size: 24px; /* Reduced further to ensure it fits without wrapping and eliminate jumping */
     font-weight: 800;
     margin-bottom: 20px;
     line-height: 1.1;
@@ -318,7 +318,7 @@ h1 span {
     display: inline-block;
     position: relative;
     transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-    min-width: 150px; /* Increased from 140px for extra safety */
+    min-width: 120px; /* Reduced from 150px as font size is smaller now */
 }
 
 .word-rotate.exit {
