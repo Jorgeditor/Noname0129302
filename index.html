@@ -49,6 +49,114 @@
             color: #ffcc00;
             text-transform: uppercase;
         }
+
+        /* Purchase Requirements Modal CSS */
+        .req-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .req-modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+        .req-modal-content {
+            background: #151515;
+            border: 1px solid #333;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            font-family: 'Outfit', sans-serif;
+        }
+        .req-modal-overlay.show .req-modal-content {
+            transform: translateY(0);
+        }
+        .req-modal-header {
+            background: rgba(255, 77, 77, 0.1);
+            border-bottom: 1px solid #333;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .req-modal-body {
+            padding: 20px 30px;
+        }
+        .req-modal-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .req-modal-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+            color: #ddd;
+            line-height: 1.4;
+        }
+        .req-modal-list li:before {
+            content: "•";
+            color: #ff9900;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+        .req-modal-list strong {
+            color: #ff9900;
+        }
+        .req-modal-footer {
+            padding: 20px;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        .req-btn-cancel {
+            background: transparent;
+            color: #aaa;
+            border: 1px solid #555;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .req-btn-cancel:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        .req-btn-confirm {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        .req-btn-confirm:hover {
+            background: #ff3333;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
@@ -130,7 +238,7 @@
                                     <span class="price-strikethrough">$150</span>
                                     <span class="price-current">$80</span>
                                 </div>
-                                <a href="https://jorgeditor.lemonsqueezy.com/checkout/buy/dce27ab4-d491-40fd-896e-76ae71faa97d" class="btn-download">
+                                <a href="#" id="buyNowBtn" class="btn-download">
                                     <i class="fas fa-shopping-cart"></i> Buy Now
                                 </a>
                             </div>
@@ -1226,6 +1334,52 @@
                 });
             }
         })();
+    </script>
+
+    <!-- PURCHASE REQUIREMENTS MODAL -->
+    <div id="requirementsModal" class="req-modal-overlay">
+        <div class="req-modal-content">
+            <div class="req-modal-header">
+                <i class="fas fa-exclamation-triangle" style="color: #ff4d4d; font-size: 1.5em; margin-right: 15px;"></i>
+                <h3 style="margin: 0; color: white;">Wait! Before you buy...</h3>
+            </div>
+            <div class="req-modal-body">
+                <p style="margin-top: 0; margin-bottom: 20px; color: #ccc; font-size: 1.05em;">Please confirm that your setup meets the following requirements:</p>
+                <ul class="req-modal-list">
+                    <li><strong>Languages:</strong> Premiere Pro must be strictly in English or Spanish.</li>
+                    <li><strong>OS:</strong> Windows Only. MacOS is NOT supported.</li>
+                    <li><strong>Version:</strong> Adobe Premiere Pro 2026 (v26.0) or higher.</li>
+                    <li><strong>Stability:</strong> The plugin works perfectly on Windows with Pr 2026+.</li>
+                    <li><strong>Limitations:</strong> Built with AI assistance; it's an evolving project and may have minor quirks.</li>
+                    <li><strong>Scope:</strong> Does not intend to replace dedicated tools; it is a unified ecosystem to speed up your workflow.</li>
+                </ul>
+            </div>
+            <div class="req-modal-footer">
+                <button id="cancelBuyBtn" class="req-btn-cancel">Cancel</button>
+                <a href="https://jorgeditor.lemonsqueezy.com/checkout/buy/dce27ab4-d491-40fd-896e-76ae71faa97d" class="req-btn-confirm">I Understand, Proceed to Checkout</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Requirements Modal Logic
+        const buyNowBtn = document.getElementById('buyNowBtn');
+        const reqModal = document.getElementById('requirementsModal');
+        const cancelBuyBtn = document.getElementById('cancelBuyBtn');
+
+        if (buyNowBtn && reqModal && cancelBuyBtn) {
+            buyNowBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                reqModal.classList.add('show');
+            });
+            cancelBuyBtn.addEventListener('click', () => {
+                reqModal.classList.remove('show');
+            });
+            reqModal.addEventListener('click', (e) => {
+                if (e.target === reqModal) {
+                    reqModal.classList.remove('show');
+                }
+            });
+        }
     </script>
 </body>
 </html>
