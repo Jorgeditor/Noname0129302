@@ -34,6 +34,21 @@
             color: #ff4d4d;
             text-transform: uppercase;
         }
+        
+        .speed-highlight {
+            border: 1px dashed #ffcc00;
+            background: rgba(255, 204, 0, 0.05);
+            color: #ffcc00;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            animation: warningBounce 3s infinite;
+            font-size: 0.9em;
+        }
+        .speed-highlight strong {
+            color: #ffcc00;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
@@ -569,6 +584,9 @@
                     <p>Access everything from one place. Find tools, effects, presets, and more instantly. LuckySearch appears and disappears on demand, keeping your workspace clean and fully connected to all your shortcuts.</p>
                     <p>Make it truly yours with extensive customization options. Change colors, pick your favorite typography, or even rename the search bar to match your personal vibe. With thousands of possible combinations, you can tailor everything to feel perfectly aligned with your workflow.</p>
                     <p>Boost your efficiency with dynamic shortcut buttons that automatically surface your most recently used effects for instant re-application. You can also curate your own selection of favorites, pinning them directly to the hub for immediate, one-click access to your most essential tools.</p>
+                    <div class="speed-highlight">
+                        <strong>Zero-Lag Performance:</strong> Experience real-time preset reading with absolutely zero lag. Forget about loading times when searching or applying your saved effects. Your tools are always ready the moment you need them.
+                    </div>
                     <div class="technical-warning">
                         <strong>Critical Note on Presets:</strong> Please be aware that due to inherent Adobe API limitations, custom interpolation curves CANNOT be preserved when presets are programmatically applied. This is a platform-wide constraint. Depending on the duration or the type of animation, <strong>some results will look extremely different</strong>, requiring manual adjustments to your easing handles for precise timing.
                     </div>
