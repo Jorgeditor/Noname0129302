@@ -280,6 +280,20 @@ main {
 }
 
 
+.support-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 159, 28, 0.05);
+    border: 1px solid rgba(255, 159, 28, 0.15);
+    padding: 10px 20px;
+    border-radius: 100px;
+    margin-bottom: 30px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .support-badge:hover {
     background: rgba(255, 159, 28, 0.1);
     border-color: var(--accent-color);
