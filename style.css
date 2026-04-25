@@ -166,6 +166,47 @@ nav a:hover {
     opacity: 1;
 }
 
+/* Ecosystem Link Badge */
+.nav-eco-link {
+    position: relative;
+}
+
+.free-badge {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffcc00;
+    color: #000;
+    font-size: 8px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.3);
+    animation: badge-float 2s infinite ease-in-out;
+    pointer-events: none;
+    line-height: 1;
+    z-index: 100;
+}
+
+.free-badge::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #ffcc00;
+}
+
+@keyframes badge-float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+}
+
 main {
     padding-top: 60px;
 }
