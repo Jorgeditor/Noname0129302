@@ -149,7 +149,7 @@
                         <div id="videoCardOne" class="premium-video-wrapper video-layer" style="display: none;" onclick="this.classList.contains('background') && swapVideos()">
                             <iframe 
                                 id="promoVideo1"
-                                data-yt-src="https://www.youtube.com/embed/he9uJyVtHKU?controls=1&mute=0&autoplay=0&rel=0&modestbranding=1&vq=hd1080&enablejsapi=1" 
+                                data-yt-src="https://www.youtube.com/embed/_Y7NjzwwbHU?controls=1&mute=0&autoplay=0&rel=0&modestbranding=1&vq=hd1080&enablejsapi=1" 
                                 title="LuckyTools PROMO ONE"
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -161,7 +161,7 @@
                             <iframe 
                                 id="promoVideo2"
                                 loading="lazy"
-                                data-yt-src="https://www.youtube.com/embed/he9uJyVtHKU?controls=1&mute=0&autoplay=0&rel=0&modestbranding=1&vq=hd1080&enablejsapi=1" 
+                                data-yt-src="https://www.youtube.com/embed/_Y7NjzwwbHU?controls=1&mute=0&autoplay=0&rel=0&modestbranding=1&vq=hd1080&enablejsapi=1" 
                                 title="LuckyTools PROMO TWO"
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -182,7 +182,10 @@
         
         <!-- COMPATIBILITY FAQ SECTION -->
         <section class="faq-section container">
-            <h2 class="reveal reveal-up" style="text-align: center; margin-bottom: 25px; font-family: 'Outfit', sans-serif;">Clarifications & Requirements</h2>
+            <h2 class="reveal reveal-up" style="text-align: center; margin-bottom: 25px; font-family: 'Outfit', sans-serif;">
+                Clarifications & Requirements 
+                <span style="background: #ff4d4d; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.45em; vertical-align: middle; text-transform: uppercase; animation: warningBounce 3s infinite; display: inline-block; margin-left: 10px; letter-spacing: 1px;">Must Read</span>
+            </h2>
             <div class="faq-accordion">
                 <div class="faq-item reveal reveal-left delay-1" onclick="this.classList.toggle('open')">
                     <div class="faq-question">
@@ -956,15 +959,15 @@
                     
                     if (ytPlayer2 && typeof ytPlayer2.cueVideoById === "function") {
                         if (isPlaying) {
-                            ytPlayer2.loadVideoById({'videoId': 'toKUxkLZoqw', 'startSeconds': currentTime});
+                            ytPlayer2.loadVideoById({'videoId': 'I_zrtYdQu5E', 'startSeconds': currentTime});
                         } else {
-                            ytPlayer2.cueVideoById({'videoId': 'toKUxkLZoqw', 'startSeconds': currentTime});
+                            ytPlayer2.cueVideoById({'videoId': 'I_zrtYdQu5E', 'startSeconds': currentTime});
                         }
                     } else {
                         // Fallback logic
                         const startParam = currentTime > 0 ? `&start=${Math.floor(currentTime)}` : '';
                         const autoplayParam = isPlaying ? `&autoplay=1` : `&autoplay=0`;
-                        targetVideo.src = `https://www.youtube.com/embed/toKUxkLZoqw?controls=1&mute=0&rel=0&enablejsapi=1${startParam}${autoplayParam}`;
+                        targetVideo.src = `https://www.youtube.com/embed/I_zrtYdQu5E?controls=1&mute=0&rel=0&enablejsapi=1${startParam}${autoplayParam}`;
                     }
                     targetVideo.dataset.swapped = "true";
                 }
@@ -982,9 +985,9 @@
                     
                     if (ytPlayer2 && typeof ytPlayer2.cueVideoById === "function") {
                         if (isPlaying) {
-                            ytPlayer2.loadVideoById({'videoId': 'he9uJyVtHKU', 'startSeconds': currentTime});
+                            ytPlayer2.loadVideoById({'videoId': '_Y7NjzwwbHU', 'startSeconds': currentTime});
                         } else {
-                            ytPlayer2.cueVideoById({'videoId': 'he9uJyVtHKU', 'startSeconds': currentTime});
+                            ytPlayer2.cueVideoById({'videoId': '_Y7NjzwwbHU', 'startSeconds': currentTime});
                         }
                     } else {
                         // Fallback
