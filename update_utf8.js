@@ -239,12 +239,39 @@ const newMain =     <main>
                     </div>
                     <h3>LuckyAnchor: <br>Surgical Control</h3>
                     <p>Precision is key to great editing. Reposition the anchor point of your clips with mathematical exactness, saving minutes of frustrating manual adjustments.</p>
+                    <div class="property-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        Works for both <span>Motion</span> & <span>Transform</span>
+                    </div>
+
                     <ul class="feature-list">
                         <li><span>>></span> 9-Point Alignment</li>
                         <li><span>>></span> Custom Offsets</li>
                         <li><span>>></span> Shuffle Anchor</li>
                         <li><span>>></span> Real-time Update</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- FREE ANCHOR ALTERNATIVE -->
+            <div class="free-anchor-callout" style="
+                margin: 60px 0 60px 0;
+                background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, rgba(100,180,255,0.04) 100%);
+                border: 1px solid rgba(0,212,255,0.2);
+                border-radius: 18px;
+                padding: 40px 44px;
+                position: relative;
+                overflow: hidden;
+            ">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px; flex-wrap: wrap;">
+                    <div style="background: linear-gradient(135deg, #00d4ff, #0099ff); color: #000; font-weight: 800; font-size: 0.7em; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 30px; white-space: nowrap; font-family: 'Outfit', sans-serif;">🎁 FREE ALTERNATIVE</div>
+                </div>
+                <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 260px;">
+                        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.9em; font-weight: 800; color: white; margin: 0 0 14px 0; line-height: 1.2;">Need a free anchor tool? <br><span style="color: #00d4ff;">Anchor Editor</span> by Marck has you covered.</h3>
+                        <p style="color: #bbb; line-height: 1.7; margin: 0 0 18px 0; font-size: 0.97em;">If you're looking for a simple, community-made alternative — specifically designed to work only with the Transform effect — Anchor Editor by @MarckDBM is a great free tool from the Busco Editor community.</p>
+                        <p style="color: #bbb; line-height: 1.7; margin: 0 0 18px 0; font-size: 0.97em;">It's completely Open Source, meaning anyone can peek under the hood and customize it!</p>
+                    </div>
                 </div>
             </div>
 
