@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide | LuckyTools</title>
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <link rel="shortcut icon" type="image/png" href="favicon.png?v=2">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .guide-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            margin-bottom: 80px;
+        }
+        .guide-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+            height: max-content;
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .guide-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-sidebar li {
+            margin-bottom: 10px;
+        }
+        .guide-sidebar a {
+            color: #aaa;
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .guide-sidebar a:hover {
+            background: rgba(255, 204, 0, 0.1);
+            color: #ffcc00;
+        }
+        .guide-content {
+            flex-grow: 1;
+        }
+        .guide-section {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            scroll-margin-top: 100px;
+        }
+        .guide-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
+        }
+        .guide-section p {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .guide-section ul {
+            color: #bbb;
+            line-height: 1.6;
+            padding-left: 20px;
+        }
+        @media (max-width: 900px) {
+            .guide-container {
+                flex-direction: column;
+            }
+            .guide-sidebar {
+                width: 100%;
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <header class="container">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 10px;">
+                <img src="logo-demo.png" alt="Logo" class="header-logo">
+                LuckyTools
+            </a>
+        </div>
+        <nav>
+            <a href="about.html">About</a>
+            <div class="nav-eco-link" style="margin-left: 30px;">
+                <a href="guide.html" style="margin-left: 0; opacity: 1; color: var(--accent-color);">Guide</a>
+                <span class="free-badge">LEARN!!</span>
+            </div>
+            <div class="nav-eco-link" style="margin-left: 30px;">
+                <a href="ecosystem.html" style="margin-left: 0; opacity: 1; color: var(--accent-color);">Ecosystem</a>
+                <span class="free-badge">FREE PLUGINS!!</span>
+            </div>
+            <a href="contact.html">Contact</a>
+            <a href="licenses.html">Licenses</a>
+        </nav>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <a href="index.html">Home</a>
+        <div class="nav-overlay-divider"></div>
+        <a href="about.html">About</a>
+        <div class="nav-overlay-divider"></div>
+        <div class="nav-eco-link" style="margin-left: 0; margin-bottom: 20px;">
+            <a href="guide.html" style="margin-left: 0; opacity: 1; color: var(--accent-color); font-size: 24px;">Guide</a>
+            <span class="free-badge" style="top: 40px;">LEARN!!</span>
+        </div>
+        <div class="nav-overlay-divider"></div>
+        <div class="nav-eco-link" style="margin-left: 0; margin-bottom: 20px;">
+            <a href="ecosystem.html" style="margin-left: 0; opacity: 1; color: var(--accent-color); font-size: 24px;">Ecosystem</a>
+            <span class="free-badge" style="top: 40px;">FREE PLUGINS!!</span>
+        </div>
+        <div class="nav-overlay-divider"></div>
+        <a href="contact.html">Contact</a>
+        <div class="nav-overlay-divider"></div>
+        <a href="licenses.html">Licenses</a>
+    </div>
+
+    <main class="inner-page-main">
+        <div class="container">
+            <div class="page-header-v2">
+                <h1>The Ultimate <br><span style="color: var(--accent-color);">LuckyTools Guide</span></h1>
+                <p>Master every panel in the ecosystem to supercharge your workflow and edit at the speed of thought.</p>
+            </div>
+
+            <div class="guide-container">
+                <aside class="guide-sidebar">
+                    <ul>
+                        <li><a href="#luckysearch">LuckySearch</a></li>
+                        <li><a href="#luckyshortcuts">LuckyShortcuts</a></li>
+                        <li><a href="#luckyorganize">LuckyOrganize</a></li>
+                        <li><a href="#luckyzoom">LuckyZoom</a></li>
+                        <li><a href="#luckycut">LuckyCut</a></li>
+                        <li><a href="#luckypod">LuckyPod</a></li>
+                        <li><a href="#luckynotes">LuckyNotes</a></li>
+                        <li><a href="#luckycurves">LuckyCurves</a></li>
+                        <li><a href="#luckyanchor">LuckyAnchor</a></li>
+                    </ul>
+                </aside>
+
+                <div class="guide-content">
+                    <section id="luckysearch" class="guide-section">
+                        <h2><i class="fas fa-search" style="margin-right: 10px;"></i>LuckySearch</h2>
+                        <p><strong>Your Central Hub</strong> for accessing everything from one place. Find tools, effects, presets, and more instantly.</p>
+                        <ul>
+                            <li><strong>Quick Access:</strong> LuckySearch appears and disappears on demand. Keep your workspace clean.</li>
+                            <li><strong>Customization:</strong> Change colors, fonts, or the search bar name to match your personal vibe.</li>
+                            <li><strong>Dynamic Shortcuts:</strong> Automatically surfaces your most recently used effects for instant re-application.</li>
+                            <li><strong>Zero-Lag:</strong> Enjoy real-time preset reading with absolutely zero lag.</li>
+                        </ul>
+                    </section>
+
+                    <section id="luckyshortcuts" class="guide-section">
+                        <h2><i class="fas fa-keyboard" style="margin-right: 10px;"></i>LuckyShortcuts</h2>
+                        <p><strong>Turbo Hotkeys</strong> designed to let you assign individual actions inside LuckyTools directly to your keyboard.</p>
+                        <ul>
+                            <li><strong>Zero Latency:</strong> Move faster when applying presets, transitions, or effects to clips.</li>
+                            <li><strong>Direct Actions:</strong> Lightning-fast, 1-to-1 shortcuts to essential actions.</li>
+                            <li><em>Note: Complex multi-effect macros are not supported to guarantee absolute stability.</em></li>
+                        </ul>
+                    </section>
+
+                    <section id="luckyorganize" class="guide-section">
+                        <h2><i class="fas fa-folder-open" style="margin-right: 10px;"></i>LuckyOrganize</h2>
+                        <p><strong>Structure Folders</strong> instantly to keep your project bins perfectly organized and visually coherent.</p>
+                        <ul>
+                            <li><strong>Auto-Sort:</strong> Organize media and sequences based on predefined logical patterns.</li>
+                            <li><strong>Easy Setup:</strong> Set a folder name, color, and text filter—no overwhelming settings.</li>
+                            <li><em>Note: Exclusively manages items within the Premiere Project panel.</em></li>
+                        </ul>
+                    </section>
+
+                    <section id="luckyzoom" class="guide-section">
+                        <h2><i class="fas fa-search-plus" style="margin-right: 10px;"></i>LuckyZoom</h2>
+                        <p><strong>Surgical Framing</strong> for revolutionizing your framing with dynamic zooms and custom start/end points.</p>
+                        <ul>
+                            <li><strong>Grow Mode:</strong> Advanced engine integrating with native Premiere curves for world-class easing.</li>
+                            <li><strong>Scroll to Zoom:</strong> Use your mouse scroll wheel to zoom exactly where you point in the preview interface.</li>
+                            <li><strong>Transform Mode:</strong> Includes secondary mode for basic adjustments.</li>
+                        </ul>
+                    </section>
+
+                    <section id="luckycut" class="guide-section">
+                        <h2><i class="fas fa-cut" style="margin-right: 10px;"></i>LuckyCut</h2>
+                        <p><strong>Rapid Splicing</strong> utilizing dB-based silence detection.</p>
+                        <ul>
+                            <li><strong>Lightning Fast:</strong> Cut hours of silence in seconds.</li>
+                            <li><strong>Low CPU Overhead:</strong> Avoid the heavy resource usage of AI-transcription.</li>
+                        </ul>
+                    </section>
+
+                    <section id="luckypod" class="guide-section">
+                        <h2><i class="fas fa-podcast" style="margin-right: 10px;"></i>LuckyPod</h2>
+                        <p><strong>Multicam Switcher</strong> perfect for automating podcast and interview edits.</p>
+                        <ul>
+                            <li><strong>Audio Analysis:</strong> Analyzes audio signals to automatically cut and switch cameras.</li>
+                            <li><strong>One-Click Assembly:</strong> Generates a complete multicam sequence instantly.</li>
+                        </ul>
+                    </section>
+
+                    <section id="luckynotes" class="guide-section">
+                        <h2><i class="fas fa-sticky-note" style="margin-right: 10px;"></i>LuckyNotes</h2>
+                        <p><strong>Intelligent Timeline</strong> to keep your workflow organized with a visual task system.</p>
+                        <ul>
+                            <li><strong>Timecode Detection:</strong> Click any timestamp to move the playhead to that moment.</li>
+                            <li><strong>Rich Text:</strong> Extensive text customization and direct image paste support.</li>
+                            <li><em>Note: Does not create markers; solely for playhead navigation.</em></li>
+                        </ul>
+                    </section>
+
+                    <section id="luckycurves" class="guide-section">
+                        <h2><i class="fas fa-wave-square" style="margin-right: 10px;"></i>LuckyCurves</h2>
+                        <p><strong>Perfect Dynamics</strong> giving you absolute control over animation dynamics.</p>
+                        <ul>
+                            <li><strong>Laser-Focused:</strong> Apply, clear, and save custom profiles with a single click.</li>
+                            <li><strong>Simplicity:</strong> Built purely to achieve smooth animations without complex options.</li>
+                        </ul>
+                    </section>
+
+                    <section id="luckyanchor" class="guide-section">
+                        <h2><i class="fas fa-crosshairs" style="margin-right: 10px;"></i>LuckyAnchor</h2>
+                        <p><strong>Surgical Control</strong> for mathematical repositioning of anchor points.</p>
+                        <ul>
+                            <li><strong>25-Point Alignment:</strong> Instantly reposition your clip's anchor with precision grids.</li>
+                            <li><strong>Custom Offsets & Shuffle:</strong> Advanced placement tools that update in real-time.</li>
+                            <li><em>Note: Focuses entirely on pixel-perfect alignment without alpha channel detection.</em></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-glow"></div>
+        <div class="footer-bottom">
+            <div class="container footer-container-inner">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <i class="fas fa-bolt"></i> LUCKYTOOLS
+                        </div>
+                        <p>The ultimate toolkit for Adobe Premiere Pro editors. Automating the tedious, unlocking the creative.</p>
+                        <div class="social-links">
+                            <a href="https://discord.gg/55xS3QpR5S" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+                            <a href="https://www.youtube.com/@jorgeditor" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-nav">
+                        <h4>QUICK LINKS</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="ecosystem.html">Ecosystem</a></li>
+                            <li><a href="guide.html">Guide</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="licenses.html">Licenses</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-support">
+                        <h4>SUPPORT</h4>
+                        <ul>
+                            <li><a href="contact.html">Contact Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="copyright-text">
+                    <p>&copy; 2026 LUCKYTOOLS. ALL RIGHTS RESERVED. <br>DESIGNED FOR THE NEXT GENERATION OF EDITORS.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- HAMBURGER MENU ---
+        (function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+            if (!hamburgerBtn || !mobileNavOverlay) return;
+
+            function openNav() {
+                mobileNavOverlay.style.display = 'flex';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        hamburgerBtn.classList.add('active');
+                        mobileNavOverlay.classList.add('open');
+                        document.body.classList.add('nav-open');
+                    });
+                });
+            }
+
+            function closeNav() {
+                hamburgerBtn.classList.remove('active');
+                mobileNavOverlay.classList.remove('open');
+                document.body.classList.remove('nav-open');
+                setTimeout(() => {
+                    if (!mobileNavOverlay.classList.contains('open')) {
+                        mobileNavOverlay.style.display = 'none';
+                    }
+                }, 420);
+            }
+
+            hamburgerBtn.addEventListener('click', () => {
+                mobileNavOverlay.classList.contains('open') ? closeNav() : openNav();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileNavOverlay.classList.contains('open')) closeNav();
+            });
+        })();
+        
+        // --- SMOOTH SCROLL FOR SIDEBAR ---
+        document.querySelectorAll('.guide-sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
