@@ -184,6 +184,122 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4);
         }
+
+        /* ===== COMPARISON TABLE STYLES ===== */
+        .comparison-table-wrapper {
+            margin: 32px 0 8px 0;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .comparison-table-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px 10px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #aaa;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        .comparison-table-header:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .comparison-table-header i.toggle-icon {
+            margin-left: auto;
+            transition: transform 0.3s ease;
+            color: #555;
+        }
+        .comparison-table-wrapper.open .comparison-table-header i.toggle-icon {
+            transform: rotate(180deg);
+        }
+        .comparison-table-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease;
+        }
+        .comparison-table-wrapper.open .comparison-table-body {
+            max-height: 600px;
+        }
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85em;
+        }
+        .comp-table thead tr {
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .comp-table thead th {
+            padding: 11px 16px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.82em;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #888;
+        }
+        .comp-table thead th:first-child {
+            color: #ccc;
+            width: 40%;
+        }
+        .comp-table thead th.col-lucky {
+            color: #ffcc00;
+        }
+        .comp-table thead th.col-other {
+            color: #64b4ff;
+        }
+        .comp-table tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.15s;
+        }
+        .comp-table tbody tr:last-child {
+            border-bottom: none;
+        }
+        .comp-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.025);
+        }
+        .comp-table tbody td {
+            padding: 10px 16px;
+            color: #bbb;
+            vertical-align: middle;
+        }
+        .comp-table tbody td:first-child {
+            color: #ddd;
+            font-weight: 500;
+        }
+        .ct-yes {
+            color: #2ecc71;
+            font-weight: 700;
+        }
+        .ct-no {
+            color: #e74c3c;
+            font-weight: 700;
+        }
+        .ct-partial {
+            color: #f39c12;
+            font-weight: 700;
+        }
+        .ct-yes::before { content: "✓ "; }
+        .ct-no::before { content: "✕ "; }
+        .ct-partial::before { content: "◑ "; }
+        .comp-table-note {
+            padding: 10px 16px;
+            font-size: 0.78em;
+            color: #555;
+            font-style: italic;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            font-family: 'Outfit', sans-serif;
+        }
     </style>
 </head>
 
@@ -747,6 +863,36 @@
                     <div class="technical-warning">
                         <strong>Critical Note on Presets:</strong> Please be aware that due to inherent Adobe API limitations, custom interpolation curves CANNOT be preserved when presets are programmatically applied. This is a platform-wide constraint. Depending on the duration or the type of animation, <strong>some results will look extremely different</strong>, requiring manual adjustments to your easing handles for precise timing.
                     </div>
+
+                    <!-- COMPARISON TABLE: LuckySearch -->
+                    <div class="comparison-table-wrapper" id="ct-luckysearch">
+                        <div class="comparison-table-header" onclick="document.getElementById('ct-luckysearch').classList.toggle('open')">
+                            <i class="fas fa-balance-scale" style="color:#ffcc00;"></i>
+                            LuckySearch vs. Other Tools
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="comparison-table-body">
+                            <table class="comp-table">
+                                <thead><tr>
+                                    <th>Feature</th>
+                                    <th class="col-lucky">LuckySearch</th>
+                                    <th class="col-other">CommandPost / KBar</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td>Apply effects/presets via search</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>Zero-lag preset reading</td><td class="ct-yes">Yes</td><td class="ct-partial">Varies</td></tr>
+                                    <tr><td>Visual customization (colors, fonts)</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Rename the search bar</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Recent-used shortcut buttons</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Pinned favorites</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>Macro / action chaining</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>macOS support</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>LuckyTools ecosystem integration</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="comp-table-note">Compared against CommandPost and KBar — popular shortcut launchers for Premiere Pro.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -766,6 +912,33 @@
                     <h3>LuckyShortcuts: <br>Turbo Hotkeys</h3>
                     <p>Assign individual actions inside LuckyTools directly to your keyboard. Move faster with zero latency when applying presets, transitions, or effects to your clips.</p>
                     <p>The system is engineered exclusively for lightning-fast, 1-to-1 shortcuts to essential actions. Complex multi-effect macros or chaining functions are not supported; the architecture is dedicated to guaranteeing absolute stability and instant execution for individual commands.</p>
+
+                    <!-- COMPARISON TABLE: LuckyShortcuts -->
+                    <div class="comparison-table-wrapper" id="ct-luckyshortcuts">
+                        <div class="comparison-table-header" onclick="document.getElementById('ct-luckyshortcuts').classList.toggle('open')">
+                            <i class="fas fa-balance-scale" style="color:#ffcc00;"></i>
+                            LuckyShortcuts vs. Other Tools
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="comparison-table-body">
+                            <table class="comp-table">
+                                <thead><tr>
+                                    <th>Feature</th>
+                                    <th class="col-lucky">LuckyShortcuts</th>
+                                    <th class="col-other">KBar / Premiere Hotkeys</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td>Assign keyboard shortcuts to plugin actions</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>Zero-latency execution</td><td class="ct-yes">Yes</td><td class="ct-partial">Varies</td></tr>
+                                    <tr><td>Integrated with LuckySearch</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Multi-action macros / chaining</td><td class="ct-no">No</td><td class="ct-yes">Yes (KBar)</td></tr>
+                                    <tr><td>Works without opening extra panels</td><td class="ct-yes">Yes</td><td class="ct-partial">Partial</td></tr>
+                                    <tr><td>macOS support</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="comp-table-note">Compared against KBar and native Premiere Pro hotkey assignment.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -785,6 +958,33 @@
                     <h3>LuckyOrganize: <br>Structure Folders</h3>
                     <p>Keep your project bins perfectly organized. Instantly generate folder structures or auto-sort your media and sequences based on predefined logical patterns.</p>
                     <p>Please note: LuckyOrganize exclusively manages items within your Premiere Project panel; it does not move external files on your hard drive, nor does it import media directly into your timeline. The configuration is intentionally basic—just set a folder, name, color, and text filter. No overwhelming settings or complex menus, just a straightforward organizer designed to make your workspace look and feel beautifully structured.</p>
+
+                    <!-- COMPARISON TABLE: LuckyOrganize -->
+                    <div class="comparison-table-wrapper" id="ct-luckyorganize">
+                        <div class="comparison-table-header" onclick="document.getElementById('ct-luckyorganize').classList.toggle('open')">
+                            <i class="fas fa-balance-scale" style="color:#ffcc00;"></i>
+                            LuckyOrganize vs. Other Tools
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="comparison-table-body">
+                            <table class="comp-table">
+                                <thead><tr>
+                                    <th>Feature</th>
+                                    <th class="col-lucky">LuckyOrganize</th>
+                                    <th class="col-other">autoImporter / Manual</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td>Auto-sort bins by rule/filter</td><td class="ct-yes">Yes</td><td class="ct-partial">Partial</td></tr>
+                                    <tr><td>Generate folder structures instantly</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Color-coded bins</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Moves files on hard drive</td><td class="ct-no">No</td><td class="ct-yes">Yes (autoImporter)</td></tr>
+                                    <tr><td>Imports media to timeline</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>LuckyTools ecosystem integration</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="comp-table-note">Focused on in-panel Premiere bin management only — not a replacement for full media managers.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -806,6 +1006,34 @@
                     <p>Revolutionize your framing with dynamic zooms that allow you to define custom start and end points for any shot. Whether you need a smooth zoom-in, a strategic zoom-out, or a point-A-to-B shift, LuckyZoom delivers perfect results every time—including dynamic static framing.</p>
                     <p>The panel is powered by the ultimate <strong>Grow</strong> mode, an advanced engine that integrates directly with native Premiere handles and curves to deliver world-class easing and unparalleled surgical precision. A secondary <strong>Transform</strong> mode is also included for basic adjustments.</p>
                     <p>Navigate your workspace with a familiar, intuitive preview interface. Use your mouse scroll wheel to zoom exactly where you're pointing, just like the native Premiere Pro experience, making precision adjustments and frame inspection faster and more natural than ever.</p>
+
+                    <!-- COMPARISON TABLE: LuckyZoom -->
+                    <div class="comparison-table-wrapper" id="ct-luckyzoom">
+                        <div class="comparison-table-header" onclick="document.getElementById('ct-luckyzoom').classList.toggle('open')">
+                            <i class="fas fa-balance-scale" style="color:#ffcc00;"></i>
+                            LuckyZoom vs. Other Tools
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="comparison-table-body">
+                            <table class="comp-table">
+                                <thead><tr>
+                                    <th>Feature</th>
+                                    <th class="col-lucky">LuckyZoom</th>
+                                    <th class="col-other">Motion Bro / Manual KF</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td>Custom start &amp; end zoom points</td><td class="ct-yes">Yes</td><td class="ct-partial">Partial</td></tr>
+                                    <tr><td>Grow mode (native curve easing)</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Transform mode</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>Mouse-scroll preview zoom</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Dynamic static framing</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Works via LuckySearch/Shortcuts</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>macOS support</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="comp-table-note">Compared against Motion Bro and manual keyframe-based zoom workflows in Premiere Pro.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -824,6 +1052,34 @@
                     </div>
                     <h3>LuckyCut: <br>Rapid Splicing</h3>
                     <p>Our dB-based silence detection is lightyears faster than transcription-based tools. Cut hours of silence in seconds without the heavy CPU overhead of AI-transcription, keeping your timeline fluid and lightweight.</p>
+
+                    <!-- COMPARISON TABLE: LuckyCut -->
+                    <div class="comparison-table-wrapper" id="ct-luckycut">
+                        <div class="comparison-table-header" onclick="document.getElementById('ct-luckycut').classList.toggle('open')">
+                            <i class="fas fa-balance-scale" style="color:#ffcc00;"></i>
+                            LuckyCut vs. Other Tools
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="comparison-table-body">
+                            <table class="comp-table">
+                                <thead><tr>
+                                    <th>Feature</th>
+                                    <th class="col-lucky">LuckyCut</th>
+                                    <th class="col-other">Premiere Speech / Claquette</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td>Silence detection</td><td class="ct-yes">Yes (dB-based)</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>AI / transcription-based cutting</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>Heavy CPU overhead</td><td class="ct-no">Minimal</td><td class="ct-partial">High (AI)</td></tr>
+                                    <tr><td>Processing speed</td><td class="ct-yes">Very fast</td><td class="ct-partial">Slower</td></tr>
+                                    <tr><td>Word-level precision cuts</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>LuckyTools ecosystem integration</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>macOS support</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="comp-table-note">Best for rapid silence removal. For word-level transcript editing, AI tools like Premiere Speech remain superior.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -842,6 +1098,33 @@
                     </div>
                     <h3>LuckyPod: <br>Multicam Switcher</h3>
                     <p>Automate your podcast and interview edits. LuckyPod analyzes audio signals to automatically cut and switch between cameras, generating a complete multicam assembly in a single click.</p>
+
+                    <!-- COMPARISON TABLE: LuckyPod -->
+                    <div class="comparison-table-wrapper" id="ct-luckypod">
+                        <div class="comparison-table-header" onclick="document.getElementById('ct-luckypod').classList.toggle('open')">
+                            <i class="fas fa-balance-scale" style="color:#ffcc00;"></i>
+                            LuckyPod vs. Other Tools
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="comparison-table-body">
+                            <table class="comp-table">
+                                <thead><tr>
+                                    <th>Feature</th>
+                                    <th class="col-lucky">LuckyPod</th>
+                                    <th class="col-other">Podcast Editor / Manual</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td>Audio-signal based camera switching</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Multicam assembly in one click</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Manual camera selection</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>AI speaker detection</td><td class="ct-no">No</td><td class="ct-partial">Some tools</td></tr>
+                                    <tr><td>LuckyTools ecosystem integration</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>macOS support</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="comp-table-note">Focused on audio-driven multicam assembly. Not a replacement for AI speaker-detection tools.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -868,6 +1151,34 @@
                         <li><span>>></span> Task List System</li>
                         <li><span>>></span> Status Indicators</li>
                     </ul>
+
+                    <!-- COMPARISON TABLE: LuckyNotes -->
+                    <div class="comparison-table-wrapper" id="ct-luckynotes">
+                        <div class="comparison-table-header" onclick="document.getElementById('ct-luckynotes').classList.toggle('open')">
+                            <i class="fas fa-balance-scale" style="color:#ffcc00;"></i>
+                            LuckyNotes vs. Other Tools
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="comparison-table-body">
+                            <table class="comp-table">
+                                <thead><tr>
+                                    <th>Feature</th>
+                                    <th class="col-lucky">LuckyNotes</th>
+                                    <th class="col-other">Notion / External Notes</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td>Notes panel inside Premiere Pro</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Task list with status indicators</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>Timecode click-to-navigate</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Paste images directly into notes</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>Creates markers on timeline</td><td class="ct-no">No</td><td class="ct-no">N/A</td></tr>
+                                    <tr><td>Text customization (fonts, colors)</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>Requires leaving Premiere</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="comp-table-note">Compared against external note-taking apps like Notion or Apple Notes. LuckyNotes lives inside Premiere.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -886,6 +1197,36 @@
                     </div>
                     <h3>LuckyCurves: <br>Perfect Dynamics</h3>
                     <p>Take absolute control over your animation dynamics. Please note that LuckyCurves serves a highly specific purpose: applying curves, clearing curves, and creating custom profiles. There are no other complex options—it is a laser-focused tool designed purely to achieve smooth animations.</p>
+
+                    <!-- COMPARISON TABLE: LuckyCurves -->
+                    <div class="comparison-table-wrapper" id="ct-luckycurves">
+                        <div class="comparison-table-header" onclick="document.getElementById('ct-luckycurves').classList.toggle('open')">
+                            <i class="fas fa-balance-scale" style="color:#ffcc00;"></i>
+                            LuckyCurves vs. Other Tools
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="comparison-table-body">
+                            <table class="comp-table">
+                                <thead><tr>
+                                    <th>Feature</th>
+                                    <th class="col-lucky">LuckyCurves</th>
+                                    <th class="col-other">Graph Editor (free) / Manual</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td>Apply easing curves with one click</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>Clear curves instantly</td><td class="ct-yes">Yes</td><td class="ct-partial">Manual only</td></tr>
+                                    <tr><td>Save custom curve profiles</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes (Graph Editor)</td></tr>
+                                    <tr><td>Speed Graph mode</td><td class="ct-partial">Basic</td><td class="ct-yes">Yes (Graph Editor)</td></tr>
+                                    <tr><td>Value Graph mode (AE-style)</td><td class="ct-no">No</td><td class="ct-yes">Yes (Graph Editor)</td></tr>
+                                    <tr><td>Works inside Premiere natively</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>After Effects support</td><td class="ct-no">No</td><td class="ct-yes">Yes (Graph Editor)</td></tr>
+                                    <tr><td>LuckySearch/Shortcuts integration</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Price</td><td class="ct-yes">Included in LuckyTools</td><td class="ct-yes">Free</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="comp-table-note">Graph Editor by @Animateo offers more curve types for free. LuckyCurves trades depth for speed &amp; ecosystem integration.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1065,6 +1406,36 @@
                         <li><span>>></span> Real-time Update</li>
                         <li><span>>></span> LuckySearch Integration</li>
                     </ul>
+
+                    <!-- COMPARISON TABLE: LuckyAnchor -->
+                    <div class="comparison-table-wrapper" id="ct-luckyanchor">
+                        <div class="comparison-table-header" onclick="document.getElementById('ct-luckyanchor').classList.toggle('open')">
+                            <i class="fas fa-balance-scale" style="color:#ffcc00;"></i>
+                            LuckyAnchor vs. Other Tools
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="comparison-table-body">
+                            <table class="comp-table">
+                                <thead><tr>
+                                    <th>Feature</th>
+                                    <th class="col-lucky">LuckyAnchor</th>
+                                    <th class="col-other">Anchor Editor (free)</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td>Works with Motion component</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Works with Transform effect</td><td class="ct-yes">Yes</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>25-point alignment grid</td><td class="ct-yes">Yes</td><td class="ct-partial">Basic</td></tr>
+                                    <tr><td>Custom pixel offsets</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Keyboard shortcut assignment</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>LuckySearch integration</td><td class="ct-yes">Yes</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Alpha channel detection</td><td class="ct-no">No</td><td class="ct-no">No</td></tr>
+                                    <tr><td>Open source</td><td class="ct-no">No</td><td class="ct-yes">Yes</td></tr>
+                                    <tr><td>Price</td><td class="ct-partial">Included in LuckyTools</td><td class="ct-yes">Free</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="comp-table-note">Anchor Editor by @MarckDBM &amp; @Franjec is a great free option for Transform-only workflows. LuckyAnchor is universal (Motion + Transform) with shortcut &amp; hub integration.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
