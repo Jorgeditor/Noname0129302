@@ -93,6 +93,37 @@
             background: var(--accent-color);
             color: #000;
         }
+
+        /* Plugin Slideshow Styles */
+        .plugin-slideshow {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: #0f0f0f;
+            border-bottom: 1px solid #333;
+            overflow: hidden;
+        }
+        .plugin-slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: fadeSlide3 12s infinite;
+        }
+        .plugin-slideshow img:nth-child(1) { animation-delay: 0s; }
+        .plugin-slideshow img:nth-child(2) { animation-delay: 4s; }
+        .plugin-slideshow img:nth-child(3) { animation-delay: 8s; }
+
+        @keyframes fadeSlide3 {
+            0% { opacity: 0; transform: scale(1.05); }
+            5% { opacity: 1; transform: scale(1); }
+            30% { opacity: 1; transform: scale(1); }
+            35% { opacity: 0; transform: scale(1.05); }
+            100% { opacity: 0; transform: scale(1.05); }
+        }
     </style>
 </head>
 <body>
@@ -190,7 +221,11 @@
 
                 <!-- Graph Editor App -->
                 <div class="plugin-card">
-                    <img src="GRAPHEDITOR.png" alt="Graph Editor UI" class="plugin-cover" style="object-fit: cover;">
+                    <div class="plugin-slideshow">
+                        <img src="GRAPHEDITOR.png" alt="Graph Editor Cover">
+                        <img src="grapheditorindex2.png" alt="Premiere Pro Interface">
+                        <img src="grapheditorafter1.png" alt="After Effects Interface">
+                    </div>
                     <div class="plugin-info">
                         <h3 class="plugin-title">GRAPH EDITOR</h3>
                         <p class="plugin-desc">A completely free, responsive extension for <strong style="color: #ffcc00; font-size: 1.05em; text-shadow: 0 0 5px rgba(255, 204, 0, 0.4);">After Effects & Premiere Pro</strong>. Features advanced speed and value curves, keyframe controls, the ability to save/delete curves, and a favorites system to speed up your edits.</p>
